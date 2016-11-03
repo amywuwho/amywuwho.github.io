@@ -1,0 +1,22 @@
+
+
+
+.udit {
+	margin: 10px;
+}
+
+#vids {
+	font-weight: bold;
+	margin: 40px;
+}
+
+.panel {
+	background-color: pink;
+	padding: 20px;
+}
+
+.panel:hover {
+	background-color: red;
+	color: white;
+	cursor: pointer;
+}
