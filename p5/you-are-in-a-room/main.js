@@ -4,7 +4,7 @@ var places, location;
 
 function preload() {
     z = loadStrings("zork.txt");
-    places = loadStrings("places.yml");
+    // places = loadStrings("places.yml");
 }
 
 function setup() {
@@ -18,7 +18,7 @@ function setup() {
 
     // lines = ["You are in a room."];
 
-    rg = new RiGrammar(places.join('\n'));
+    // rg = new RiGrammar(places.join('\n'));
     location = "room";
 
 
@@ -38,6 +38,6 @@ function drawText() {
 function mouseClicked() {
     // lines = rm.generateSentences(4);
     
-    location = rg.expand();
+    // location = rg.expand();
     drawText();
 }
