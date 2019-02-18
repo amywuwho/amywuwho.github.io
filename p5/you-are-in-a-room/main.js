@@ -1,11 +1,11 @@
 var rm, lines;
 var z;
 var cur_loc;
-// var places, rg;
+var places, rg;
 
 function preload() {
     z = loadStrings("zork.txt");
-    // places = loadStrings("places.yml");
+    places = loadStrings("places.yml");
 }
 
 function setup() {
@@ -17,9 +17,7 @@ function setup() {
     textAlign(CENTER, CENTER);
     noStroke();
 
-    lines = ["You are in a room."];
-
-    // rg = new RiGrammar(places.join('\n'));
+    rg = new RiGrammar(places.join('\n'));
     cur_loc = "room";
 
 
@@ -39,7 +37,7 @@ function drawText() {
 function mouseClicked() {
     // lines = rm.generateSentences(2);
     
-    // location = rg.expand();
+    cur_loc = rg.expand();
     drawText();
 }
 
