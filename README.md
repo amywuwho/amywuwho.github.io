@@ -1,3 +1,7 @@
+This is a work in progress for a personal website I'm developing as a side project. It's a learning experience, since I don't know any webdev! Just using Bootstrap for now, see license below.
+--
+
+
 # [Start Bootstrap - Creative](https://startbootstrap.com/template-overviews/creative/)
 
 [Creative](http://startbootstrap.com/template-overviews/creative/) is a one page creative theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).
