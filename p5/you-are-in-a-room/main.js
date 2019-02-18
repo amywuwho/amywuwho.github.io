@@ -5,7 +5,6 @@ var places, rg;
 
 function preload() {
     z = loadStrings("zork.txt");
-    places = loadStrings("places.yml");
 }
 
 function setup() {
@@ -17,7 +16,8 @@ function setup() {
     textAlign(CENTER, CENTER);
     noStroke();
 
-    rg = new RiGrammar(places.join('\n'));
+    rg = new RiGrammar();
+    rg.loadFrom("places.yml");
     cur_loc = "room";
 
 
@@ -29,7 +29,7 @@ function setup() {
 
 function drawText() {
     background(253, 246, 227);
-    text("You are in a " + cur_loc, windowWidth/2, windowHeight/2);
+    text("You are in a " + cur_loc + ".", windowWidth/2, windowHeight/2);
 
     // text(lines.join(' '), windowWidth/2, windowHeight/2);
 }
