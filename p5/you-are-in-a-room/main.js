@@ -1,14 +1,12 @@
 var rm, lines;
-var data;
 // var ctt, ps, sh, tlh, z;
 
 function preload() {
-  data = loadStrings("genesis.txt");
-    // ctt = loadStrings("color_the_truth.txt");
-    // ps = loadStrings("problem_sleuth.txt");
-    // sh = loadStrings("stone_harbor.txt");
-    // tlh = loadStrings("the_lurking_horror.txt");
-    // z = loadStrings("zork.txt");
+    ctt = loadStrings("color_the_truth.txt");
+    ps = loadStrings("problem_sleuth.txt");
+    sh = loadStrings("stone_harbor.txt");
+    tlh = loadStrings("the_lurking_horror.txt");
+    z = loadStrings("zork.txt");
 
 }
 
@@ -24,17 +22,18 @@ function setup() {
     lines = ["click to generate"];
 
     rm = new RiMarkov(4);
-    // rm.loadText(ctt.join(' '));
-    // rm.loadText(ps.join(' '));
-    // rm.loadText(sh.join(' '));
-    // rm.loadText(tlh.join(' '));
-    // rm.loadText(z.join(' '));
+    rm.loadText(ctt.join(' '));
+    rm.loadText(ps.join(' '));
+    rm.loadText(sh.join(' '));
+    rm.loadText(tlh.join(' '));
+    rm.loadText(z.join(' '));
     rm.loadText(data.join(' '));
 
     drawText();
 }
 
 function drawText() {
+    background(253, 246, 227);
     text(lines.join(' '), windowWidth/2, windowHeight/2);
 }
 
