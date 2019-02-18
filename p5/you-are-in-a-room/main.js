@@ -3,11 +3,11 @@ var rm, lines;
 var data;
 
 function preload() {
-    ctt = loadStrings("color_the_truth.txt");
-    ps = loadStrings("problem_sleuth.txt");
-    sh = loadStrings("stone_harbor.txt");
-    tlh = loadStrings("the_lurking_horror.txt");
-    z = loadStrings("zork.txt");
+    // ctt = loadStrings("color_the_truth.txt");
+    // ps = loadStrings("problem_sleuth.txt");
+    // sh = loadStrings("stone_harbor.txt");
+    // tlh = loadStrings("the_lurking_horror.txt");
+    // z = loadStrings("zork.txt");
 
     data = loadStrings("genesis.txt");
 
