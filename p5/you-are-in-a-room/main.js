@@ -1,5 +1,5 @@
 var rm, lines;
-// var ctt, ps, sh, tlh, z;
+var ctt, ps, sh, tlh, z;
 
 function preload() {
     ctt = loadStrings("color_the_truth.txt");
@@ -19,7 +19,7 @@ function setup() {
     textAlign(CENTER, CENTER);
     noStroke();
 
-    lines = ["click to generate"];
+    lines = ["click to re-generate"];
 
     rm = new RiMarkov(4);
     rm.loadText(ctt.join(' '));
@@ -27,7 +27,6 @@ function setup() {
     rm.loadText(sh.join(' '));
     rm.loadText(tlh.join(' '));
     rm.loadText(z.join(' '));
-    rm.loadText(data.join(' '));
 
     drawText();
 }
