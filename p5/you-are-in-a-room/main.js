@@ -1,6 +1,6 @@
 var rm, lines;
 var z;
-var location;
+var loc;
 // var places, rg;
 
 function preload() {
@@ -20,7 +20,7 @@ function setup() {
     lines = ["You are in a room."];
 
     // rg = new RiGrammar(places.join('\n'));
-    location = "room";
+    loc = "room";
 
 
     rm = new RiMarkov(5);
@@ -31,7 +31,7 @@ function setup() {
 
 function drawText() {
     background(253, 246, 227);
-    text("You are in a " + location, windowWidth/2, windowHeight/2);
+    text("You are in a " + loc, windowWidth/2, windowHeight/2);
 
     // text(lines.join(' '), windowWidth/2, windowHeight/2);
 }
