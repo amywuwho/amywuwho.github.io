@@ -29,9 +29,12 @@
     "sunlit",
     "chilly",
     "shadowy",
-    "haunting",
+    "haunted",
     "lively",
-    "polluted"
+    "polluted",
+    "unusual",
+    "weird",
+    "uninhabited"
   ],
   "<location>": [ 
     "library",

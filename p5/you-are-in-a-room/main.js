@@ -29,7 +29,17 @@ function setup() {
 
 function drawText() {
     background(253, 246, 227);
-    text("You are in a " + cur_loc + ".", windowWidth/2, windowHeight/2);
+    var first_letter = cur_loc.substring(0, 1);
+    var article = "a ";
+    if (first_letter == "a" || 
+        first_letter == "e" ||
+        first_letter == "i" ||
+        first_letter == "o" ||
+        first_letter == "u")
+        article = "an ";
+    text("You are in " + 
+         article + 
+         cur_loc + ".", windowWidth/2, windowHeight/2);
 
     // text(lines.join(' '), windowWidth/2, windowHeight/2);
 }
