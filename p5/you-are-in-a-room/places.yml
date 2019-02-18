@@ -1,0 +1,113 @@
+--- 
+<descriptor>: 
+  - huge
+  - abandoned
+  - busy
+  - crowded
+  - small
+  - smelly
+  - cold
+  - hot
+  - warm
+  - old
+  - new
+  - modern
+  - ancient
+  - fancy
+  - gilded
+  - rundown
+  - cavernous
+  - beautiful
+  - bustling
+  - boring
+  - charming
+  - contemporary
+  - empty
+  - sunlit
+  - chilly
+  - shadowy
+  - haunting
+  - lively
+  - polluted
+<location>: 
+  - library
+  - building
+  - cathedral
+  - restaurant
+  - school
+  - "police station"
+  - ravine
+  - canyon
+  - forest
+  - meadow
+  - cave
+  - river
+  - house
+  - store
+  - club
+  - bar
+  - cabin
+  - hotel
+  - bookstore
+  - airport
+  - "train station"
+  - "bus station"
+  - coffeehouse
+  - backyard
+  - yard
+  - city
+  - farm
+  - barnhouse
+  - bank
+  - office
+  - "parking lot"
+  - hospital
+  - museum
+  - hangar
+  - quarry
+  - mine
+  - church
+  - mosque
+  - temple
+  - graveyard
+  - cemetary
+  - battleground
+  - ruins
+  - aquarium
+  - dealership
+  - "art gallery"
+  - bathhouse
+  - bayou
+  - creek
+  - boat
+  - bookshop
+  - bungalow
+  - bunker
+  - campground
+  - chasm
+  - tunnel
+  - "black ops facility"
+  - gulch
+  - dungeon
+  - watchtower
+  - garden
+  - park
+  - "ghost town"
+  - gorge
+  - grotto
+  - grove
+  - clearing
+  - junkyard
+  - Laundromat
+  - mansion
+  - maze
+  - motel
+  - inn
+  - Airbnb
+  - "movie theater"
+  - outpost
+  - plaza
+  - swamp
+  - tavern
+  
+<place>: "<descriptor> <location>"

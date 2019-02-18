@@ -1,17 +1,10 @@
-var rm, lines;
+var rm, lines, rg;
 var z;
-// var ctt, ps, sh, tlh, z;
-// var data;
+var places, location;
 
 function preload() {
-    // ctt = loadStrings("color_the_truth.txt");
-    // ps = loadStrings("problem_sleuth.txt");
-    // sh = loadStrings("stone_harbor.txt");
-    // tlh = loadStrings("the_lurking_horror.txt");
     z = loadStrings("zork.txt");
-
-    // data = loadStrings("genesis.txt");
-
+    places = loadStrings("places.yml");
 }
 
 function setup() {
@@ -23,25 +16,25 @@ function setup() {
     textAlign(CENTER, CENTER);
     noStroke();
 
-    lines = ["click to re-generate"];
+    // lines = ["You are in a room."];
+
+    rg = new RiGrammar(places.join('\n'));
+    location = "room";
+
 
     rm = new RiMarkov(4);
-    // rm.loadText(ctt.join(' '));
-    // rm.loadText(ps.join(' '));
-    // rm.loadText(sh.join(' '));
-    // rm.loadText(tlh.join(' '));
     rm.loadText(z.join(' '));
-    // rm.loadText(data.join(' '));
-
-    drawText();
 }
 
-function drawText() {
+function draw() {
     background(253, 246, 227);
-    text(lines.join(' '), windowWidth/2, windowHeight/2);
+    text("You are in a" + location, windowWidth/2, windowHeight/2);
+
+    // text(lines.join(' '), windowWidth/2, windowHeight/2);
 }
 
 function mouseClicked() {
-    lines = rm.generateSentences(2);
-    drawText();
+    // lines = rm.generateSentences(4);
+    
+    location = rg.expand();
 }
