@@ -125,7 +125,6 @@ On the south wall is an enormous mirror which fills the entire wall.
 There are exits on the other three sides of the room.
 There is a rumble from deep within the earth and the room shakes.
 This is a cold and damp corridor where a long east-west passageway turns into a southward path.
-This is a small chamber, which appears to have been part of a coal mine.
 On the south wall of the chamber the letters "Granite Wall" are etched in the rock.
 To the east is a long passage, and there is a steep metal slide twisting downward.
 To the north is a small opening.
@@ -168,14 +167,11 @@ There is a crystal skull here.
 There is a broken timber here.
 A seedy-looking individual with a large bag just wandered through the room.
 A "lean and hungry" gentleman just wandered through, carrying a large bag.
-From the chain is suspended a basket.
-The basket is raised to the top of the shaft.
 You are in a long room, to the north of which was formerly a lake.
 There is a wide stream running through the center of the room.
 You are on what used to be a large lake, but which is now a large mud pile.
 There are "shores" to the north and south.
 Lying half buried in the mud is an old trunk, bulging with jewels.
-You are in a large cavernous room, the south of which was formerly a lake.
 However, with the water level lowered, there is merely a wide stream running through there.
 There is a slimy stairway leaving the room to the north.
 There is a hand-held air pump here.
@@ -230,7 +226,6 @@ The deceased adventurer's useless lantern is here.
 There is a skeleton key here.
 An old leather bag, bulging with coins, is here.
 This is part of a maze of twisty little passages, all alike.
-The lamp appears a bit dimmer.
 This room has an exit on the northwest, and a staircase leading up.
 A cyclops, who looks prepared to eat horses, blocks the staircase.
 This is a large room, whose east wall is solid granite.
@@ -253,3 +248,36 @@ This all seems highly, highly improbable.
 You can't imagine what could possibly go wrong.
 You are trying to look inconspicuous.
 The walnut-stained radio plays in the background.
+The broad oak desk stands firmly near the wall like a bastion of truth. Its imposing presence has intimidated scores of young policemen.
+A woman pushes through: mid-forties, no-nonsense, a bit frumpy for your taste.
+The unmistakable stench of burning popcorn still leaks in from the break room to the west.
+The radio is playing Uptown Girl.
+You look down and see nothing, as if you aren’t there.
+The color has been washed out of the room.
+Objects are blurry and indistinct, like an old photograph.
+This was the first actual psychic experience of your life.
+Bitter, bone-cracking cold assaults you continuously.
+The wind howls around your ears.
+The temperature and the blizzard conditions are both horrible.
+Fluorescent lights cast harsh shadows.
+It is pitch black.
+There are whispers from long-forgotten ghosts.
+Neon lights flash at the corner of your vision.
+Animals scamper past.
+The sun flashes brightly in your eyes.
+The wind carries in a scent of flowers.
+There are Coke cans and the remnants of a picnic on the ground.
+You feel enlightened.
+You feel refreshed.
+You are wary.
+The urchin saunters nonchalantly into the room, notices you, and beats a hasty retreat.
+Something is rumbling beneath your feet.
+You feel joyful.
+You feel relaxed.
+Your clothes whip about in the wind.
+Nothing makes sense.
+The universe is meaningless.
+What does destiny have in store for you?
+It is time to embark on a bright adventure.
+You are ready to step into the future.
+You are full of hope.

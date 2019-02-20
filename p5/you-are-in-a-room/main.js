@@ -77,7 +77,8 @@ class Room {
     }
 
     populate() {
-        this.desc = rm.generateSentences(4);
+        var sentences = rm.generateSentences(4);
+        this.desc = sentences.join(' ');
     }
 }
 
@@ -110,7 +111,7 @@ function chooseArticle() {
 /* ------------------------- P5.JS DEFAULTS ------------------------- */
 
 function preload() {
-    z = loadStrings("zork.txt");
+    z = loadStrings("lines.txt");
 }
 
 function setup() {
@@ -153,7 +154,7 @@ function drawText() {
          cur_room.title + ".", width/2, height/5);
 
     textAlign(LEFT, TOP);
-    text(cur_room.desc.join(' '), lines_margin, height/3, width-2*lines_margin, height/2);
+    text(cur_room.desc, lines_margin, height/3, width-2*lines_margin, height/2);
 }
 
 function keyPressed() {
