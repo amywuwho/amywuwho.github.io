@@ -86,6 +86,7 @@ function setup() {
     fill(48, 63, 71);
     textSize(25);
     textAlign(CENTER, CENTER);
+    rectMode(CENTER);
     noStroke();
     lines_margin = 50;
 
@@ -107,7 +108,6 @@ function setup() {
 
 function drawText() {
     background(253, 246, 227);
-    textAlign(CENTER, CENTER);
 
     var first_letter = cur_room.title.substring(0, 1);
     var article = "a ";
