@@ -1,18 +1,23 @@
-var rm, lines;
+var rm;
 var z;
 var places, rg;
 var input;
-var cur_room;
+var cur_room, start_room;
 var lines_margin;
 var cnv;
 
+/* ------------------------- CLASS DEFINITIONS ------------------------- */
 class Room {
     constructor(name) {
         this.title = name;
+        this.desc = "";
+
         this.north = null;
         this.east = null;
         this.west = null;
         this.south = null;
+
+        this.objects = [];
     }
 
     move(dir) {
@@ -22,6 +27,7 @@ class Room {
                 var new_title = rg.expand();
                 var new_room = new Room(new_title);
                 rm.loadText(new_title);
+                new_room.populate();
                 new_room.south = this;
                 this.north = new_room;
                 cur_room = new_room;
@@ -33,6 +39,7 @@ class Room {
                 var new_title = rg.expand();
                 var new_room = new Room(new_title);
                 rm.loadText(new_title);
+                new_room.populate();
                 new_room.north = this;
                 this.south = new_room;
                 cur_room = new_room;
@@ -44,6 +51,7 @@ class Room {
                 var new_title = rg.expand();
                 var new_room = new Room(new_title);
                 rm.loadText(new_title);
+                new_room.populate();
                 new_room.west = this;
                 this.east = new_room;
                 cur_room = new_room;
@@ -55,6 +63,7 @@ class Room {
                 var new_title = rg.expand();
                 var new_room = new Room(new_title);
                 rm.loadText(new_title);
+                new_room.populate();
                 new_room.east = this;
                 this.west = new_room;
                 cur_room = new_room;
@@ -66,16 +75,42 @@ class Room {
         //     this.move(random_dir);
         // }
     }
+
+    populate() {
+        this.desc = rm.generateSentences(4);
+    }
 }
 
-function preload() {
-    z = loadStrings("zork.txt");
-}
-
+/* ------------------------- WINDOW HELPERS ------------------------- */
 function centerCanvas() {
     var x = (windowWidth - width) / 2;
     var y = (windowHeight - height) / 2;
     cnv.position(x, y);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+    centerCanvas();
+}
+
+/* ----------------------- TEXT PARSE HELPERS ----------------------- */
+
+function chooseArticle() {
+    var first_letter = cur_room.title.substring(0, 1);
+    var article = "a ";
+    if (first_letter == "a" || 
+        first_letter == "e" ||
+        first_letter == "i" ||
+        first_letter == "o" ||
+        first_letter == "u")
+        article = "an ";
+    return article;
+}
+
+/* ------------------------- P5.JS DEFAULTS ------------------------- */
+
+function preload() {
+    z = loadStrings("zork.txt");
 }
 
 function setup() {
@@ -94,7 +129,8 @@ function setup() {
     input.size(300, 50);
     input.position(width/2-input.width/2, height*2/3);
 
-    cur_room = new Room("room");
+    start_room = new Room("room");
+    cur_room = start_room;
 
     rg = new RiGrammar();
     rg.loadFrom("places.yml");
@@ -109,22 +145,15 @@ function setup() {
 function drawText() {
     background(253, 246, 227);
 
-    var first_letter = cur_room.title.substring(0, 1);
-    var article = "a ";
-    if (first_letter == "a" || 
-        first_letter == "e" ||
-        first_letter == "i" ||
-        first_letter == "o" ||
-        first_letter == "u")
-        article = "an ";
+    var article = chooseArticle();
+
     textAlign(CENTER, CENTER);
     text("You are in " + 
          article + 
          cur_room.title + ".", width/2, height/5);
 
-    var lines = rm.generateSentences(4);
     textAlign(LEFT, TOP);
-    text(lines.join(' '), lines_margin, height/3, width-2*lines_margin, height/2);
+    text(cur_room.desc.join(' '), lines_margin, height/3, width-2*lines_margin, height/2);
 }
 
 function keyPressed() {
@@ -132,24 +161,15 @@ function keyPressed() {
         // make sure they're correct formatting
         const input_cmd = RiTa.trimPunctuation(input.value().trim());
         const cmd_tokens = RiTa.tokenize(input_cmd);
-        console.log(input_cmd);
-        for (var i = 0; i < cmd_tokens.length; i++) {
-            cmd_tokens[i].trim().toLowerCase();
-        }
 
-        // move
-        
+        /* ------------------------- ACTIONS ------------------------- */
         if (cmd_tokens[0] === "move") cur_room.move(cmd_tokens[1]);
 
         // try to return something based on what they say
         else rm.loadText(input_cmd, 3);
+        /* ----------------------------------------------------------- */
 
         input.value('');
         drawText();
     }
-}
-
-function windowResized(){
-    resizeCanvas(windowWidth, windowHeight);
-    centerCanvas();
 }
