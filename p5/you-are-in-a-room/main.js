@@ -14,6 +14,7 @@ class Character {
     }
 
     take(thing, place) {
+        console.log(thing);
         var thingIndex = -1;
         for (var index = 0; index < place.objects.length; index++) {
             if (place.objects[index].indexOf(thing) !== -1) thingIndex = index;
@@ -37,6 +38,7 @@ class Character {
     }
 
     put(thing, place) {
+        console.log(thing);
         if (this.inventory.includes(thing)) {
             place.objects += thing;
             place.desc += this.inventory[thing];
@@ -229,10 +231,12 @@ function keyPressed() {
 
         else if (cmd_tokens[0] === "put" ||
                  cmd_tokens[0] === "throw") 
-                you.put(cmd_tokens[1]);
-        else if (cmd_tokens[0] === "take") you.take(cmd_tokens[1]);
+                you.put(cmd_tokens.slice(1).join(" "), cur_room);
+        else if (cmd_tokens[0] === "put" && cmd_tokens[1] === "down")
+            you.put(cmd_tokens.slice(2).join(" "), cur_room);
+        else if (cmd_tokens[0] === "take") you.take(cmd_tokens.slice(1).join(" "), cur_room);
         else if (cmd_tokens[0] === "pick" && cmd_tokens[1] === "up")
-            you.take(cmd_tokens[2]);
+            you.take(cmd_tokens.slice(2).join(" "), cur_room);
 
         // just make it smarter if they don't have...anything
         else rm.loadText(input_cmd, 3);
