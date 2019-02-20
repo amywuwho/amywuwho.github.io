@@ -3,6 +3,7 @@ var z;
 var places, rg;
 var input;
 var cur_room;
+var margin;
 
 class Room {
     constructor(name) {
@@ -14,40 +15,64 @@ class Room {
     }
 
     move(dir) {
+        console.log("title");
+        console.log(this.title);
+        console.log("dir");
+        console.log(dir);
         if (dir === "north") {
             if (this.north != null) cur_room = this.north;
             else {
-                var new_room = new Room(rg.expand());
+                var new_title = rg.expand();
+                var new_room = new Room(new_title);
+                rm.loadText(new_title);
                 new_room.south = this;
                 this.north = new_room;
                 cur_room = new_room;
+
+                console.log(this.north);
+                console.log(new_room.south);
             }
         }
         else if (dir === "south") {
             if (this.south != null) cur_room = this.south;
             else {
-                var new_room = new Room(rg.expand());
+                var new_title = rg.expand();
+                var new_room = new Room(new_title);
+                rm.loadText(new_title);
                 new_room.north = this;
                 this.south = new_room;
                 cur_room = new_room;
+
+                console.log(this.south);
+                console.log(new_room.north);
             }
         }
         else if (dir === "east") {
             if (this.east != null) cur_room = this.east;
             else {
-                var new_room = new Room(rg.expand());
+                var new_title = rg.expand();
+                var new_room = new Room(new_title);
+                rm.loadText(new_title);
                 new_room.west = this;
                 this.east = new_room;
                 cur_room = new_room;
+
+                console.log(this.east);
+                console.log(new_room.west);
             }
         }
         if (dir === "west") {
             if (this.west != null) cur_room = this.west;
             else {
-                var new_room = new Room(rg.expand());
+                var new_title = rg.expand();
+                var new_room = new Room(new_title);
+                rm.loadText(new_title);
                 new_room.east = this;
                 this.west = new_room;
                 cur_room = new_room;
+
+                console.log(this.west);
+                console.log(new_room.east);
             }
         }
         else { // move in random direction
@@ -67,12 +92,13 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     background(253, 246, 227);
     fill(48, 63, 71);
-    textSize(50);
+    textSize(25);
     textAlign(CENTER, CENTER);
     noStroke();
+    margin = 10;
 
     input = createInput();
-    input.position(windowWidth/2, windowHeight*4/5);
+    input.position(windowWidth/2-input.width/2, windowHeight*4/5);
 
     cur_room = new Room("room");
 
@@ -98,10 +124,10 @@ function drawText() {
         article = "an ";
     text("You are in " + 
          article + 
-         cur_room.title + ".", windowWidth/2, windowHeight/4);
+         cur_room.title + ".", windowWidth/2, margin);
 
     var lines = rm.generateSentences(4);
-    text(lines.join(' '), windowWidth/4, windowWidth*3/4, windowHeight/2, windowHeight*3/4);
+    text(lines.join(' '), margin, windowWidth-margin, windowHeight/3, windowHeight*3/4);
 }
 
 function keyPressed() {
