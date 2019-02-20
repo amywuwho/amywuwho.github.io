@@ -83,7 +83,7 @@ function setup() {
 
     input = createInput();
     input.style('font-size', '25px');
-    input.position(windowWidth/2-input.width/2, windowHeight*4/5);
+    input.position(width/2-input.width/2, height*4/5);
 
     cur_room = new Room("room");
 
@@ -109,10 +109,10 @@ function drawText() {
         article = "an ";
     text("You are in " + 
          article + 
-         cur_room.title + ".", windowWidth/2, windowHeight/4);
+         cur_room.title + ".", width/2, height/4);
 
     var lines = rm.generateSentences(4);
-    text(lines.join(' '), windowWidth/2, windowHeight*3/4);
+    text(lines.join(' '), width/2, height*3/4);
 }
 
 function keyPressed() {
@@ -130,7 +130,7 @@ function keyPressed() {
         if (cmd_tokens[0] === "move") cur_room.move(cmd_tokens[1]);
 
         // try to return something based on what they say
-        else rm.loadTokens(cmd_tokens);
+        else rm.loadText(input_cmd, 3);
 
         input.value('');
         drawText();
