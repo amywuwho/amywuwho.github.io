@@ -39,7 +39,7 @@ class Character {
 
     put(thing, place) {
         console.log(thing);
-        if (this.inventory.includes(thing)) {
+        if (thing in this.inventory) {
             place.objects += thing;
             place.desc += this.inventory[thing];
             delete this.inventory[thing];
