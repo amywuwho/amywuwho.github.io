@@ -84,9 +84,8 @@ function setup() {
     centerCanvas();
     background(253, 246, 227);
     fill(48, 63, 71);
-    textSize(25);
+    textSize(35);
     textAlign(CENTER, CENTER);
-    rectMode(CENTER);
     noStroke();
     lines_margin = 50;
 
@@ -119,10 +118,10 @@ function drawText() {
         article = "an ";
     text("You are in " + 
          article + 
-         cur_room.title + ".", width/2, height/4);
+         cur_room.title + ".", width/2, height/5);
 
     var lines = rm.generateSentences(4);
-    text(lines.join(' '), width/2, height*3/4, width-2*lines_margin);
+    text(lines.join(' '), lines_margin, height*2/5, width-lines_margin, height*4/5);
 }
 
 function keyPressed() {
