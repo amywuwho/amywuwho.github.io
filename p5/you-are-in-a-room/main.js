@@ -14,10 +14,14 @@ class Character {
     }
 
     take(thing, place) {
-        if (place.objects.includes(thing)) {
-            var i = places.objects.indexOf(thing);
+        var thingIndex = -1;
+        for (var index = 0; index < place.objects.length; index++) {
+            if (place.objects[index].indexOf(thing) !== -1) thingIndex = index;
+        }
+
+        if (thingIndex !== -1) {
             var obj_sentence = "";
-            place.objects.splice(i, 1);
+            place.objects.splice(thingIndex, 1);
 
             for (var j = 0; j < places.desc.length; j++) {
                 if (places.desc[j].indexOf(thing) !== -1) {
@@ -226,9 +230,9 @@ function keyPressed() {
         else if (cmd_tokens[0] === "put" ||
                  cmd_tokens[0] === "throw") 
                 you.put(cmd_tokens[1]);
-        else if (cmd_tokens[0] === "take" ||
-                 cmd_tokens[1] === "pick") 
-                you.take(cmd_tokens[1]);
+        else if (cmd_tokens[0] === "take") you.take(cmd_tokens[1]);
+        else if (cmd_tokens[0] === "pick" && cmd_tokens[1] === "up")
+            you.take(cmd_tokens[2]);
 
         // just make it smarter if they don't have...anything
         else rm.loadText(input_cmd, 3);
