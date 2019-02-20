@@ -202,7 +202,7 @@ function drawText() {
          cur_room.title + ".", width/2, height/5);
 
     textAlign(LEFT, TOP);
-    text(cur_room.desc.join(' '), lines_margin, height/3, width-2*lines_margin, height/2);
+    text(cur_room.desc, lines_margin, height/3, width-2*lines_margin, height/2);
 }
 
 function keyPressed() {
@@ -229,11 +229,11 @@ function keyPressed() {
             cmd_tokens[0] === "right"
         ) cur_room.move(cmd_tokens[0]);
 
+        else if (cmd_tokens[0] === "put" && cmd_tokens[1] === "down")
+            you.put(cmd_tokens.slice(2).join(" "), cur_room);
         else if (cmd_tokens[0] === "put" ||
                  cmd_tokens[0] === "throw") 
                 you.put(cmd_tokens.slice(1).join(" "), cur_room);
-        else if (cmd_tokens[0] === "put" && cmd_tokens[1] === "down")
-            you.put(cmd_tokens.slice(2).join(" "), cur_room);
         else if (cmd_tokens[0] === "take") you.take(cmd_tokens.slice(1).join(" "), cur_room);
         else if (cmd_tokens[0] === "pick" && cmd_tokens[1] === "up")
             you.take(cmd_tokens.slice(2).join(" "), cur_room);
