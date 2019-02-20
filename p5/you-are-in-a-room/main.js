@@ -40,8 +40,8 @@ class Character {
     put(thing, place) {
         console.log(thing);
         if (thing in this.inventory) {
-            place.objects += thing;
-            place.desc += this.inventory[thing];
+            place.objects.push(thing);
+            place.desc.push(this.inventory[thing]);
             delete this.inventory[thing];
 
             console.log(place.objects);
@@ -202,7 +202,7 @@ function drawText() {
          cur_room.title + ".", width/2, height/5);
 
     textAlign(LEFT, TOP);
-    text(cur_room.desc, lines_margin, height/3, width-2*lines_margin, height/2);
+    text(cur_room.desc.join(' '), lines_margin, height/3, width-2*lines_margin, height/2);
 }
 
 function keyPressed() {
