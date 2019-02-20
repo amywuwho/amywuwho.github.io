@@ -90,8 +90,9 @@ function setup() {
     lines_margin = 50;
 
     input = createInput();
-    // input.style('font-size', '25px');
-    input.position(width/2-input.width/2, height*4/5);
+    input.style('font-size', '25px');
+    input.size(300, 50);
+    input.position(width/2-input.width/2, height*2/3);
 
     cur_room = new Room("room");
 
@@ -116,13 +117,14 @@ function drawText() {
         first_letter == "o" ||
         first_letter == "u")
         article = "an ";
+    textAlign(CENTER, CENTER);
     text("You are in " + 
          article + 
          cur_room.title + ".", width/2, height/5);
 
     var lines = rm.generateSentences(4);
-    text(lines.join(' '), lines_margin, height*2/5, width-lines_margin, height*4/5);
-    rect(lines_margin, height*2/5, width-lines_margin, height*4/5);
+    textAlign(LEFT, TOP);
+    text(lines.join(' '), lines_margin, height/3, width-2*lines_margin, height/2);
 }
 
 function keyPressed() {

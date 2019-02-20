@@ -17,10 +17,6 @@ You are in the living room.
 There is a doorway to the east, a wooden door with strange gothic lettering to the west, which appears to be nailed shut, a trophy case, and a large oriental rug in the center of the room.
 Above the trophy case hangs an elvish sword of great antiquity.
 A battery-powered brass lantern is on the trophy case.
-With a great effort, the rug is moved to one side of the room, revealing the dusty cover of a closed trap door.
-The door reluctantly opens to reveal a rickety staircase descending into darkness.
-The brass lantern is now on.
-The trap door crashes shut, and you hear someone barring it.
 You are in a dark and damp cellar with a narrow passageway leading north, and a crawlway to the south.
 On the west is the bottom of a steep metal ramp which is unclimbable.
 You are on the east edge of a chasm, the bottom of which cannot be seen.
@@ -40,18 +36,10 @@ The only exit is a stairway leading down.
 A large coil of rope is lying in the corner.
 On a table is a nasty-looking knife.
 The glass bottle contains a quantity of water.
-Above the trophy case hangs an elvish sword of great antiquity.Dropped.The door reluctantly opens to reveal a rickety staircase descending into darkness.
-Your sword is glowing with a faint blue glow.
+Above the trophy case hangs an elvish sword of great antiquity.
 This is a small room with passages to the east and south and a forbidding hole leading west.
 Bloodstains and deep scratches  mar the walls.
 A nasty-looking troll, brandishing a bloody axe, blocks all passages out of the room.
-Your sword has begun to glow very brightly.
-The troll's mighty blow drops you to your knees.You are still recovering from that last blow, so your attack is ineffective.
-The troll's axe barely misses your ear.Clang! Crash! The troll parries.
-The troll's axe barely misses your ear.The troll is confused and can't fight back.
-The troll slowly regains his feet.The troll is knocked out!The unarmed troll cannot defend himself: He dies.
-Almost as soon as the troll breathes his last breath, a cloud of sinister black fog envelops him, and when the fog lifts, the carcass has disappeared.
-Your sword is no longer glowing.
 This is a narrow east-west passageway.
 There is a narrow stairway leading down at the north end of the room.
 This is a circular stone room with passages in all directions.
@@ -80,8 +68,9 @@ In front of you is what appears to be an altar.
 In one corner is a small hole in the floor which leads into darkness.
 You probably could not get back up it.
 On the two ends of the altar are burning candles.
-On the altar is a large black book, open to page 569.This is a forest, with trees in all directions.
-To the east, there appears to be sunlight.The brass lantern is now off.
+On the altar is a large black book, open to page 569.
+This is a forest, with trees in all directions.
+To the east, there appears to be sunlight.
 This is a dimly lit forest, with large trees all around.
 You are in a small clearing in a well marked forest path that extends to the east and west.
 You are at the top of the Great Canyon on its west wall.
@@ -103,12 +92,8 @@ You are on a small, rocky beach on the continuation of the Frigid River past the
 The beach is narrow due to the presence of the White Cliffs.
 The river canyon opens here and sunlight shines in from above.
 A rainbow crosses over the falls to the east and a narrow path continues to the southwest.The gold coffin opens.
-A sceptre, possibly that of ancient Egypt itself, is in the coffin.
-The sceptre is ornamented with colored enamel, and tapers to a sharp point.
-Suddenly, the rainbow appears to become solid and, I venture, walkable.
-A shimmering pot of gold appears at the end of the rainbow.
-Opening the brown sack reveals a lunch, and a clove of garlic.
-There is a nasty knife here.The door reluctantly opens to reveal a rickety staircase descending into darkness.The brass lantern is now on.
+A sceptre, possibly that of ancient Egypt itself, is in the coffin. The sceptre is ornamented with colored enamel, and tapers to a sharp point.
+There is a nasty knife here.
 There is a sword here.
 A chasm runs southwest to northeast and the path follows it.
 You are on the south side of the chasm, where a crack opens into a passage.
@@ -146,23 +131,12 @@ It is unbearably loud here, with an ear-splitting roar seeming to come from all 
 There is a pounding in your head which won't stop.
 With a tremendous effort, you scramble out of the room.
 Sitting on the pedestal is a flaming torch, made of ivory.The brass lantern is now off.
-On the altar is a large black book, open to page 569.
 This is a tiny cave with entrances west and north, and a dark, forbidding staircase leading down.
 You are outside a large gateway.
 The gate is open; through it you can see a desolation, with a pile of mangled bodies in one corner.
 Thousands of voices, lamenting some hideous fate, can be heard.
 The way through the gate is barred by evil spirits, who jeer at your attempts to pass.
-The bell suddenly becomes red hot and falls to the ground.
-The wraiths, as if paralyzed, stop their jeering and slowly turn to face you.
-On their ashen faces, the expression of a long-forgotten terror takes shape.
-In your confusion, the candles drop to the ground.
-One of the matches starts to burn.The candles are lit.
-The flames flicker wildly and appear to dance.
-The earth beneath your feet trembles, and your legs nearly buckle beneath you.
-The spirits cower at your unearthly power.
-The match has gone out.
-Each word of the prayer reverberates through the hall in a deafening confusion.
-As the last word fades, a voice, loud and commanding, speaks: "Begone, fiends!" A heart-stopping scream fills the cavern, and the spirits, sensing a greater power, flee through the walls.You have entered the Land of the Living Dead.
+You have entered the Land of the Living Dead.
 Thousands of lost souls can be heard weeping and moaning.
 In the corner are stacked the remains of dozens of previous adventurers less fortunate than yourself.
 A passage exits to the north.
@@ -170,7 +144,6 @@ Lying in one corner of the room is a beautifully carved crystal skull.
 It appears to be grinning at you rather nastily.
 There is a black book here.
 On the ground is a red hot bell.
-A gust of wind blows out your candles!
 You are in a large square room with tall ceilings.
 On the south wall is an enormous mirror which fills the entire wall.
 There are exits on the other three sides of the room.
@@ -213,11 +186,6 @@ This is a long and narrow passage, which is cluttered with broken timbers.
 A wide passage comes from the east and turns at the west end of the room into a very narrow passageway.
 From the west comes a strong draft.
 There is a broken timber here.
-crystal skull: Dropped.
-pair of candles: Dropped.
-matchbook: Dropped.
-clove of garlic: Dropped.
-brass lantern: Dropped.
 This is a small drafty room in which is the bottom of a long shaft.
 To the south is a passageway and to the east a very narrow passage.
 In the shaft can be seen a heavy iron chain.
@@ -226,21 +194,17 @@ In one corner there is a machine which is reminiscent of a clothes dryer.
 On its face is a switch which is labelled "START".
 The switch does not appear to be manipulable by any human hand (unless the fingers are about 1/16 by 1/4 inch).
 On the front of the machine is a large lid, which is closed.
-The lid opens.The lid closes.The machine comes to life  with a dazzling display of colored lights and bizarre noises.
-After a few moments, the excitement abates.The lid opens, revealing a huge diamond.
 There is a brass lantern (battery-powered) here.
 There is a clove of garlic here.
 There is a pair of candles here.
 There is a crystal skull here.
-There is a broken timber here.A seedy-looking individual with a large bag just wandered through the room.
-On the way through, he quietly abstracted some valuables from the room and from your possession, mumbling something about "Doing unto others before..."
+There is a broken timber here.
+A seedy-looking individual with a large bag just wandered through the room.
 A "lean and hungry" gentleman just wandered through, carrying a large bag.
-Finding nothing of value, he left disgruntled.
 From the chain is suspended a basket.
 The basket is raised to the top of the shaft.
-The brass lantern is now off.
 You are in a long room, to the north of which was formerly a lake.
-However, with the water level lowered, there is merely a wide stream running through the center of the room.
+There is a wide stream running through the center of the room.
 You are on what used to be a large lake, but which is now a large mud pile.
 There are "shores" to the north and south.
 Lying half buried in the mud is an old trunk, bulging with jewels.
@@ -257,7 +221,6 @@ Along the river are the White Cliffs which seem to form giant walls stretching f
 There is a folded pile of plastic here which has a small valve attached.The boat inflates and appears seaworthy.
 A tan label is lying inside the boat.
 You are now in the magic boat.
-Frigid River,
 You are on the Frigid River in the vicinity of the Dam.
 The river flows quietly here.
 There is a landing on the west shore.
@@ -285,7 +248,7 @@ The water here seems somewhat treacherous.
 A path travels from north to south here, the south end quickly turning around a sharp corner.
 You are at the top of Aragain Falls, an enormous waterfall with a drop of about 450 feet.
 The only path here is on the north end.
-A solid rainbow spans the falls.The brass lantern is now off.
+A solid rainbow spans the falls.
 There is a brown sack here.
 You are facing the north side of a white house.
 There is no door here, and all the windows are boarded up.
@@ -311,38 +274,21 @@ This is part of a maze of twisty little passages, all alike.
 The lamp appears a bit dimmer.
 This room has an exit on the northwest, and a staircase leading up.
 A cyclops, who looks prepared to eat horses, blocks the staircase.
-From his state of health, and the bloodstains on the walls, you gather that he is not very friendly, though he likes people.The cyclops, hearing the name of his father's deadly nemesis, flees the room by knocking down the wall on the east of the room.
 This is a large room, whose east wall is solid granite.
 A number of discarded bags, which crumble at your touch, are scattered about on the floor.
 There is an exit down a staircase.
 There is a suspicious-looking individual, holding a large bag, leaning against one wall.
-He is armed with a deadly stiletto.
 There is a silver chalice, intricately engraved, here.
-The thief attacks, and you fall back desperately.The thief is taken aback by your unexpected generosity, but accepts the jewel-encrusted egg and stops to admire its beauty.
 This is a long passage.
 To the west is one entrance.
 On the east there is an old wooden door, with a large opening in it.
-You hear a scream of anguish as you violate the robber's hideaway.
-Using passages unknown to you, he rushes to its defense.
-The thief gestures mysteriously, and the treasures in the room suddenly vanish.
-You dodge as the thief comes in low.The thief is disarmed by a subtle feint past his guard.
-The robber, somewhat surprised at this turn of events, nimbly retrieves his stiletto.You dodge as the thief comes in low.It's curtains for the thief as your nasty knife removes his head.
-Almost as soon as the thief breathes his last breath, a cloud of sinister black fog envelops him, and when the fog lifts, the carcass has disappeared.
-As the thief dies, the power of his magic decreases, and his treasures reappear: A jewel-encrusted egg, a sapphire.
-The chalice is now safe to take.
 You are in a small room near the maze.
 There are twisty passages in the immediate vicinity.
 Above you is a grating locked with a skull-and-crossbones lock.
-The grate is unlocked.
-The grating opens to reveal trees above you.
-A pile of leaves falls onto your head and to the ground.
 You are in a clearing, with a forest surrounding you on all sides.
 A path leads south.
 There is an open grating, descending into darkness.
-You hear in the distance the chirping of a song bird.The canary chirps, slightly off-key, an aria from a forgotten opera.
+You hear in the distance the chirping of a song bird. The canary chirps, slightly off-key, an aria from a forgotten opera.
 From out of the greenery flies a lovely songbird.
-It perches on a limb just over your head and opens its beak to sing.
-As it does so a beautiful brass bauble drops from its mouth, bounces off the top of your head, and lands glimmering in the grass.
-As the canary winds down, the songbird flies away.
 There is a beautiful brass bauble here.
 The acoustics of the room change subtly.
