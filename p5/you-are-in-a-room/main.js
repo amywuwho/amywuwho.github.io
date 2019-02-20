@@ -3,7 +3,7 @@ var z;
 var places, rg;
 var input;
 var cur_room;
-var margin;
+var lines_margin;
 
 class Room {
     constructor(name) {
@@ -61,7 +61,7 @@ class Room {
                 console.log(new_room.west);
             }
         }
-        if (dir === "west") {
+        else if (dir === "west") {
             if (this.west != null) cur_room = this.west;
             else {
                 var new_title = rg.expand();
@@ -75,11 +75,11 @@ class Room {
                 console.log(new_room.east);
             }
         }
-        else { // move in random direction
-            var dirs = ["north", "south", "east", "west"];
-            var random_dir = random(dirs);
-            this.move(random_dir);
-        }
+        // else { // move in random direction
+        //     var dirs = ["north", "south", "east", "west"];
+        //     var random_dir = random(dirs);
+        //     this.move(random_dir);
+        // }
     }
 }
 
@@ -95,7 +95,7 @@ function setup() {
     textSize(25);
     textAlign(CENTER, CENTER);
     noStroke();
-    margin = 10;
+    lines_margin = 50;
 
     input = createInput();
     input.position(windowWidth/2-input.width/2, windowHeight*4/5);
@@ -124,10 +124,15 @@ function drawText() {
         article = "an ";
     text("You are in " + 
          article + 
-         cur_room.title + ".", windowWidth/2, margin);
+         cur_room.title + ".", windowWidth/2, windowHeight/4);
 
     var lines = rm.generateSentences(4);
-    text(lines.join(' '), margin, windowWidth-margin, windowHeight/3, windowHeight*3/4);
+    text(lines.join(' '), 
+         lines_margin,
+         windowHeight/3,
+         windowWidth-lines_margin,  
+         windowHeight*3/4
+    );
 }
 
 function keyPressed() {
