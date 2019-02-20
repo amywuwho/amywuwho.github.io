@@ -90,7 +90,7 @@ function setup() {
     lines_margin = 50;
 
     input = createInput();
-    input.style('font-size', '25px');
+    // input.style('font-size', '25px');
     input.position(width/2-input.width/2, height*4/5);
 
     cur_room = new Room("room");
@@ -122,7 +122,7 @@ function drawText() {
          cur_room.title + ".", width/2, height/4);
 
     var lines = rm.generateSentences(4);
-    text(lines.join(' '), width/2, height*3/4);
+    text(lines.join(' '), width/2, height*3/4, width-2*lines_margin);
 }
 
 function keyPressed() {
