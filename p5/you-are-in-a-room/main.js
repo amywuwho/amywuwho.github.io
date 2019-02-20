@@ -24,10 +24,10 @@ class Character {
             var obj_sentence = "";
             place.objects.splice(thingIndex, 1);
 
-            for (var j = 0; j < places.desc.length; j++) {
-                if (places.desc[j].indexOf(thing) !== -1) {
-                    obj_sentence += places.desc[j];
-                    places.desc.splice(j, 1);
+            for (var j = 0; j < place.desc.length; j++) {
+                if (place.desc[j].indexOf(thing) !== -1) {
+                    obj_sentence += place.desc[j];
+                    place.desc.splice(j, 1);
                 }
             }
             this.inventory[thing] = obj_sentence;
