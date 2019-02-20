@@ -4,6 +4,7 @@ var places, rg;
 var input;
 var cur_room;
 var lines_margin;
+var cnv;
 
 class Room {
     constructor(name) {
@@ -71,9 +72,16 @@ function preload() {
     z = loadStrings("zork.txt");
 }
 
+function centerCanvas() {
+    var x = (windowWidth - width) / 2;
+    var y = (windowHeight - height) / 2;
+    cnv.position(x, y);
+}
+
 function setup() {
 
-    createCanvas(windowWidth, windowHeight);
+    cnv = createCanvas(windowWidth, windowHeight);
+    centerCanvas();
     background(253, 246, 227);
     fill(48, 63, 71);
     textSize(25);
@@ -100,7 +108,7 @@ function setup() {
 function drawText() {
     background(253, 246, 227);
     textAlign(CENTER, CENTER);
-    
+
     var first_letter = cur_room.title.substring(0, 1);
     var article = "a ";
     if (first_letter == "a" || 
@@ -141,4 +149,5 @@ function keyPressed() {
 
 function windowResized(){
     resizeCanvas(windowWidth, windowHeight);
-  }
+    centerCanvas();
+}
