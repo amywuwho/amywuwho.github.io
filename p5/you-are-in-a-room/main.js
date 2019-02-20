@@ -79,6 +79,10 @@ class Room {
     populate() {
         var sentences = rm.generateSentences(4);
         this.desc = sentences.join(' ');
+        
+        var objs = window.nlp(this.desc).nouns().out('array');
+        this.objects = objs;
+        console.log(this.objects);
     }
 }
 
