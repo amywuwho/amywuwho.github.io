@@ -122,6 +122,7 @@ function drawText() {
 
     var lines = rm.generateSentences(4);
     text(lines.join(' '), lines_margin, height*2/5, width-lines_margin, height*4/5);
+    rect(lines_margin, height*2/5, width-lines_margin, height*4/5);
 }
 
 function keyPressed() {
