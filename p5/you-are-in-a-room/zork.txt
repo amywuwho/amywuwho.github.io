@@ -13,7 +13,6 @@ A passage leads to the west and a dark staircase can be seen leading upward.
 A dark chimney leads down and to the east is a small window which is open.
 On the table is an elongated brown sack, smelling of hot peppers.
 A bottle is sitting on the table.
-The glass bottle contains: A quantity of water
 You are in the living room.
 There is a doorway to the east, a wooden door with strange gothic lettering to the west, which appears to be nailed shut, a trophy case, and a large oriental rug in the center of the room.
 Above the trophy case hangs an elvish sword of great antiquity.
@@ -239,7 +238,6 @@ A "lean and hungry" gentleman just wandered through, carrying a large bag.
 Finding nothing of value, he left disgruntled.
 From the chain is suspended a basket.
 The basket is raised to the top of the shaft.
-The basket contains: A torch 
 The brass lantern is now off.
 You are in a long room, to the north of which was formerly a lake.
 However, with the water level lowered, there is merely a wide stream running through the center of the room.

@@ -15,10 +15,6 @@ class Room {
     }
 
     move(dir) {
-        console.log("title");
-        console.log(this.title);
-        console.log("dir");
-        console.log(dir);
         if (dir === "north") {
             if (this.north != null) cur_room = this.north;
             else {
@@ -28,9 +24,6 @@ class Room {
                 new_room.south = this;
                 this.north = new_room;
                 cur_room = new_room;
-
-                console.log(this.north);
-                console.log(new_room.south);
             }
         }
         else if (dir === "south") {
@@ -42,9 +35,6 @@ class Room {
                 new_room.north = this;
                 this.south = new_room;
                 cur_room = new_room;
-
-                console.log(this.south);
-                console.log(new_room.north);
             }
         }
         else if (dir === "east") {
@@ -56,9 +46,6 @@ class Room {
                 new_room.west = this;
                 this.east = new_room;
                 cur_room = new_room;
-
-                console.log(this.east);
-                console.log(new_room.west);
             }
         }
         else if (dir === "west") {
@@ -70,9 +57,6 @@ class Room {
                 new_room.east = this;
                 this.west = new_room;
                 cur_room = new_room;
-
-                console.log(this.west);
-                console.log(new_room.east);
             }
         }
         // else { // move in random direction
@@ -98,6 +82,7 @@ function setup() {
     lines_margin = 50;
 
     input = createInput();
+    input.style('font-size', '25px');
     input.position(windowWidth/2-input.width/2, windowHeight*4/5);
 
     cur_room = new Room("room");
@@ -127,12 +112,7 @@ function drawText() {
          cur_room.title + ".", windowWidth/2, windowHeight/4);
 
     var lines = rm.generateSentences(4);
-    text(lines.join(' '), 
-         lines_margin,
-         windowHeight/3,
-         windowWidth-lines_margin,  
-         windowHeight*3/4
-    );
+    text(lines.join(' '), windowWidth/2, windowHeight*3/4);
 }
 
 function keyPressed() {
@@ -152,6 +132,7 @@ function keyPressed() {
         // try to return something based on what they say
         else rm.loadTokens(cmd_tokens);
 
+        input.value('');
         drawText();
     }
 }
