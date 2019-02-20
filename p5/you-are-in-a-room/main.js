@@ -5,6 +5,7 @@ var input;
 var cur_room, start_room;
 var lines_margin;
 var cnv;
+var nlp = window.nlp_compromise;
 
 /* ------------------------- CLASS DEFINITIONS ------------------------- */
 class Room {
@@ -80,7 +81,7 @@ class Room {
         var sentences = rm.generateSentences(4);
         this.desc = sentences.join(' ');
         
-        var objs = window.nlp(this.desc).nouns().out('array');
+        var objs = nlp(this.desc).nouns().out('array');
         this.objects = objs;
         console.log(this.objects);
     }
