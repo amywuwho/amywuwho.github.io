@@ -99,6 +99,8 @@ function setup() {
 
 function drawText() {
     background(253, 246, 227);
+    textAlign(CENTER, CENTER);
+    
     var first_letter = cur_room.title.substring(0, 1);
     var article = "a ";
     if (first_letter == "a" || 
@@ -136,3 +138,7 @@ function keyPressed() {
         drawText();
     }
 }
+
+function windowResized(){
+    resizeCanvas(windowWidth, windowHeight);
+  }
