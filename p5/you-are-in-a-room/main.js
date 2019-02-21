@@ -6,6 +6,7 @@ var cur_room, start_room, you;
 var lines_margin;
 var cnv;
 var nlp = window.nlp_compromise;
+var console_message;
 
 /* ------------------------- CLASS DEFINITIONS ------------------------- */
 class Character {
@@ -22,6 +23,7 @@ class Character {
 
         if (thingIndex !== -1) {
             var obj_sentence = "";
+            console_message = "";
             place.objects.splice(thingIndex, 1);
 
             for (var j = 0; j < place.desc.length; j++) {
@@ -35,11 +37,13 @@ class Character {
             console.log(place.objects);
             console.log(this.inventory);
         }
+        else console_message = "Can't find " + thing + " in room!";
     }
 
     put(thing, place) {
         console.log(thing);
         if (thing in this.inventory) {
+            console_message = "";
             place.objects.push(thing);
             place.desc.push(this.inventory[thing]);
             delete this.inventory[thing];
@@ -47,6 +51,7 @@ class Character {
             console.log(place.objects);
             console.log(this.inventory);
         }
+        else console_message = "Can't find " + thing + " in inventory!";
     }
 }
 
@@ -64,7 +69,7 @@ class Room {
     }
 
     move(dir) {
-        if (dir === "north" || dir === "up") {
+        if (dir === "north" || dir === "up" || dir === "forwards") {
             if (this.north != null) cur_room = this.north;
             else {
                 var new_title = rg.expand();
@@ -76,7 +81,7 @@ class Room {
                 cur_room = new_room;
             }
         }
-        else if (dir === "south" || dir === "down") {
+        else if (dir === "south" || dir === "down" || dir === "backwards") {
             if (this.south != null) cur_room = this.south;
             else {
                 var new_title = rg.expand();
@@ -124,8 +129,26 @@ class Room {
         this.desc = sentences;
         
         var objs = nlp(this.desc).nouns().out('array');
+
+        // just removes all "heres"
+        for (var i = 0; i < objs.length; i++) {
+            if (objs[i] === "here") objs.splice(i, 1);
+        }
+
         this.objects = objs;
         console.log(this.objects);
+    }
+
+    inventory() {
+        var inventory_str = "You have: ";
+        for (var key in this.inventory) {
+            var thing = key + ", "
+            inventory_str += thing;
+        }
+        inventory_str.slice(0, inventory_str.length-2);
+        inventory_str += ".";
+
+        console_message = inventory_str;
     }
 }
 
@@ -165,8 +188,8 @@ function setup() {
 
     cnv = createCanvas(windowWidth, windowHeight);
     centerCanvas();
-    background(253, 246, 227);
-    fill(48, 63, 71);
+    background(45, 74, 76);
+    fill(255, 255, 255);
     textSize(35);
     textAlign(CENTER, CENTER);
     noStroke();
@@ -176,6 +199,7 @@ function setup() {
     input.style('font-size', '25px');
     input.size(300, 50);
     input.position(width/2-input.width/2, height*2/3);
+    console_message = "";
 
     start_room = new Room("room");
     cur_room = start_room;
@@ -197,9 +221,12 @@ function drawText() {
     var article = chooseArticle();
 
     textAlign(CENTER, CENTER);
+    fill(255, 0, )
     text("You are in " + 
          article + 
          cur_room.title + ".", width/2, height/5);
+
+    text(console_message, width/2, height/4);
 
     textAlign(LEFT, TOP);
     text(cur_room.desc.join(' '), lines_margin, height/3, width-2*lines_margin, height/2);
@@ -226,9 +253,12 @@ function keyPressed() {
             cmd_tokens[0] === "up" ||
             cmd_tokens[0] === "left" ||
             cmd_tokens[0] === "down" ||
-            cmd_tokens[0] === "right"
+            cmd_tokens[0] === "right" ||
+            cmd_tokens[0] === "forwards" ||
+            cmd_tokens[0] === "backwards"
         ) cur_room.move(cmd_tokens[0]);
 
+        // PUT DOWN/PICK UP
         else if (cmd_tokens[0] === "put" && cmd_tokens[1] === "down")
             you.put(cmd_tokens.slice(2).join(" "), cur_room);
         else if (cmd_tokens[0] === "put" ||
@@ -238,8 +268,19 @@ function keyPressed() {
         else if (cmd_tokens[0] === "pick" && cmd_tokens[1] === "up")
             you.take(cmd_tokens.slice(2).join(" "), cur_room);
 
-        // just make it smarter if they don't have...anything
-        else rm.loadText(input_cmd, 3);
+        // INVENTORY
+        else if (cmd_tokens[0] === "inventory" || 
+                 cmd_tokens[0] === "i" ||
+                 cmd_tokens[0] === "check inventory")
+            you.inventory();
+
+        // HIT
+
+        // try to respond in some way
+        else {
+            rm.loadText(input_cmd, 5);
+            console_message = "I didn't understand that";
+        }
         /* ----------------------------------------------------------- */
 
         input.value('');
