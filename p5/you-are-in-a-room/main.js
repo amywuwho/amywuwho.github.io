@@ -235,7 +235,7 @@ function drawText() {
     textSize(20);
     if (help_message)
         text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
-        lines_margin, height*4/5, width-2*lines_margin, height-2*lines_margin
+        width/2, height*4/5
         );
     textSize(35);
     fill(255, 255, 255);
