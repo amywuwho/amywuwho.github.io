@@ -216,12 +216,11 @@ function setup() {
 }
 
 function drawText() {
-    background(253, 246, 227);
+    background(45, 74, 76);
 
     var article = chooseArticle();
 
     textAlign(CENTER, CENTER);
-    fill(255, 0, )
     text("You are in " + 
          article + 
          cur_room.title + ".", width/2, height/5);
