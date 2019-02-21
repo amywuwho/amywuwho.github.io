@@ -131,11 +131,6 @@ class Room {
                 cur_room = new_room;
             }
         }
-        // else { // move in random direction
-        //     var dirs = ["north", "south", "east", "west"];
-        //     var random_dir = random(dirs);
-        //     this.move(random_dir);
-        // }
     }
 
     populate() {
@@ -233,9 +228,10 @@ function drawText() {
     fill(255, 35, 90);
     text(console_message, width/2, height/6);
     textSize(20);
+    textAlign(LEFT, TOP);
     if (help_message)
         text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
-        width/2, height*4/5
+        lines_margin, height*4/5, width-2*lines_margin, height
         );
     textSize(35);
     fill(255, 255, 255);
