@@ -69,6 +69,7 @@ class Room {
     }
 
     move(dir) {
+        console_message = "";
         if (dir === "north" || dir === "up" || dir === "forwards") {
             if (this.north != null) cur_room = this.north;
             else {
@@ -223,9 +224,9 @@ function drawText() {
     textAlign(CENTER, CENTER);
     text("You are in " + 
          article + 
-         cur_room.title + ".", width/2, height/5);
+         cur_room.title + ".", width/2, height/4);
 
-    text(console_message, width/2, height/4);
+    text(console_message, width/2, height/6);
 
     textAlign(LEFT, TOP);
     text(cur_room.desc.join(' '), lines_margin, height/3, width-2*lines_margin, height/2);
@@ -278,7 +279,7 @@ function keyPressed() {
         // try to respond in some way
         else {
             rm.loadText(input_cmd, 5);
-            console_message = "I didn't understand that";
+            console_message = "I didn't understand that.";
         }
         /* ----------------------------------------------------------- */
 
