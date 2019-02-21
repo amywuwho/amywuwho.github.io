@@ -53,6 +53,18 @@ class Character {
         }
         else console_message = "Can't find " + thing + " in inventory!";
     }
+
+    inventory() {
+        var inventory_str = "You have: ";
+        for (var key in this.inventory) {
+            var thing = key + ", "
+            inventory_str += thing;
+        }
+        inventory_str.slice(0, inventory_str.length-2);
+        inventory_str += ".";
+
+        console_message = inventory_str;
+    }
 }
 
 class Room {
@@ -139,18 +151,6 @@ class Room {
         this.objects = objs;
         console.log(this.objects);
     }
-
-    inventory() {
-        var inventory_str = "You have: ";
-        for (var key in this.inventory) {
-            var thing = key + ", "
-            inventory_str += thing;
-        }
-        inventory_str.slice(0, inventory_str.length-2);
-        inventory_str += ".";
-
-        console_message = inventory_str;
-    }
 }
 
 /* ------------------------- WINDOW HELPERS ------------------------- */
@@ -234,6 +234,15 @@ function drawText() {
     text(cur_room.desc.join(' '), lines_margin, height/3, width-2*lines_margin, height/2);
 }
 
+function helpText() {
+    background(45, 74, 76);
+    fill(255, 255, 255);
+    textAlign(LEFT, TOP);
+
+    var help = "You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now."
+    text(cur_room.desc.join(' '), lines_margin, height/3, width-2*lines_margin, height/2);
+}
+
 function keyPressed() {
     if (keyCode === ENTER) {
         // make sure they're correct formatting
@@ -275,6 +284,9 @@ function keyPressed() {
                  cmd_tokens[0] === "i" ||
                  cmd_tokens[0] === "check inventory")
             you.inventory();
+
+        else if (cmd_tokens[0] === "help")
+            helpText();
 
         // HIT
 
