@@ -54,7 +54,7 @@ class Character {
         else console_message = "Can't find " + thing + " in inventory!";
     }
 
-    inventory() {
+    takeInventory() {
         var inventory_str = "You have: ";
         for (var key in this.inventory) {
             var thing = key + ", "
@@ -230,16 +230,8 @@ function drawText() {
     fill(255, 35, 90);
     text(console_message, width/2, height/6);
 
-    textAlign(LEFT, TOP);
-    text(cur_room.desc.join(' '), lines_margin, height/3, width-2*lines_margin, height/2);
-}
-
-function helpText() {
-    background(45, 74, 76);
     fill(255, 255, 255);
     textAlign(LEFT, TOP);
-
-    var help = "You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now."
     text(cur_room.desc.join(' '), lines_margin, height/3, width-2*lines_margin, height/2);
 }
 
@@ -283,10 +275,10 @@ function keyPressed() {
         else if (cmd_tokens[0] === "inventory" || 
                  cmd_tokens[0] === "i" ||
                  cmd_tokens[0] === "check inventory")
-            you.inventory();
+            you.takeInventory();
 
         else if (cmd_tokens[0] === "help")
-            helpText();
+            console_message = "You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.";
 
         // HIT
 
