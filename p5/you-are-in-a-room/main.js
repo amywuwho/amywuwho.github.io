@@ -222,10 +222,12 @@ function drawText() {
     var article = chooseArticle();
 
     textAlign(CENTER, CENTER);
+    fill(255, 255, 255);
     text("You are in " + 
          article + 
          cur_room.title + ".", width/2, height/4);
 
+    fill(255, 35, 90);
     text(console_message, width/2, height/6);
 
     textAlign(LEFT, TOP);
