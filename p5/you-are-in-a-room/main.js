@@ -7,6 +7,7 @@ var lines_margin;
 var cnv;
 var nlp = window.nlp_compromise;
 var console_message;
+var help_message;
 
 /* ------------------------- CLASS DEFINITIONS ------------------------- */
 class Character {
@@ -201,6 +202,7 @@ function setup() {
     input.size(300, 50);
     input.position(width/2-input.width/2, height*2/3);
     console_message = "";
+    help_message = true;
 
     start_room = new Room("room");
     cur_room = start_room;
@@ -221,6 +223,7 @@ function drawText() {
 
     var article = chooseArticle();
 
+    textSize(35);
     textAlign(CENTER, CENTER);
     fill(255, 255, 255);
     text("You are in " + 
@@ -229,7 +232,12 @@ function drawText() {
 
     fill(255, 35, 90);
     text(console_message, width/2, height/6);
-
+    textSize(10);
+    if (help_message)
+        text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
+        width/2, height*3/4
+        );
+    textSize(35);
     fill(255, 255, 255);
     textAlign(LEFT, TOP);
     text(cur_room.desc.join(' '), lines_margin, height/3, width-2*lines_margin, height/2);
@@ -277,8 +285,8 @@ function keyPressed() {
                  cmd_tokens[0] === "check inventory")
             you.takeInventory();
 
-        else if (cmd_tokens[0] === "help")
-            console_message = "You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.";
+        else if (cmd_tokens[0] === "help" || cmd_tokens[0] === "h")
+            (help_message) ? false : true;
 
         // HIT
 
