@@ -74,7 +74,7 @@ class Room {
     constructor(name) {
         this.title = name;
         this.desc = [];
-        this.img = this.roomImage(name);
+        this.img = this.roomImage(title);
 
         this.north = null;
         this.east = null;
@@ -153,7 +153,7 @@ class Room {
 
 
     roomImage() {
-        return 'assets/room_base.png';
+        return loadImage('assets/room_base.png');
     }
 }
 
@@ -237,26 +237,29 @@ function drawText() {
     fill(255, 255, 255);
     text("You are in " + 
          article + 
-         cur_room.title + ".", width/2, height/4);
+         cur_room.title + ".", width/2, height/5);
 
-    text(console_message, width/2, height/6);
-    textSize(20);
+    textSize(15);
+    text(console_message, width/2, height/8);
     textAlign(LEFT, TOP);
-    if (help_message)
+    if (help_message) {
         text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
-        lines_margin, height*4/5, width-2*lines_margin, height
+        lines_margin, height*7/8, width-2*lines_margin, height
         );
         // text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
         // width/2, height*5/6
         // );
+    }
     textSize(30);
     fill(255, 255, 255);
     textAlign(LEFT, TOP);
-    text(cur_room.desc.join(' '), lines_margin, height*2/3, width-2*lines_margin, height/2);
+    text(cur_room.desc.join(' '), lines_margin, height*3/4, width-2*lines_margin, height/2);
     
     // testing
-    // try #3
-    image(loadImage(cur_room.img), width/2-cur_room.img.width/2, height/2 - cur_room.img.height/2);
+    // try #1
+    image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height);
+    // try #2
+    image(cur_room.roomImage(), width/2-cur_room.img.width/2, height/2 - cur_room.img.height);
 }
 
 function keyPressed() {
