@@ -9,7 +9,7 @@ var nlp = window.nlp_compromise;
 var console_message;
 var help_message;
 var font;
-// var room_img;
+var room_img;
 
 /* ------------------------- CLASS DEFINITIONS ------------------------- */
 class Character {
@@ -208,7 +208,7 @@ function setup() {
     input = createInput();
     input.style('font-size', '25px');
     input.size(300, 50);
-    input.position(width/2-input.width/2, height*2/3);
+    input.position(width/2-input.width/2, height*2/3+20);
     console_message = "";
     help_message = true;
 
@@ -237,9 +237,9 @@ function drawText() {
     fill(255, 255, 255);
     text("You are in " + 
          article + 
-         cur_room.title + ".", width/2, height/5);
+         cur_room.title + ".", width/2, height/6);
 
-    textSize(15);
+    textSize(20);
     text(console_message, width/2, height/8);
     textAlign(LEFT, TOP);
     if (help_message) {
@@ -253,13 +253,14 @@ function drawText() {
     textSize(30);
     fill(255, 255, 255);
     textAlign(LEFT, TOP);
-    text(cur_room.desc.join(' '), lines_margin, height*3/4, width-2*lines_margin, height/2);
+    text(cur_room.desc.join(' '), lines_margin, height/4, width-2*lines_margin, height/2);
     
     // testing
     // try #1
-    image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height);
+    // image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height);
     // try #2
-    image(cur_room.roomImage(), width/2-cur_room.img.width/2, height/2 - cur_room.img.height);
+    room_img = cur_room.roomImage();
+    image(room_img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/2);
 }
 
 function keyPressed() {
