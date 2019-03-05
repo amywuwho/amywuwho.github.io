@@ -9,6 +9,7 @@ var nlp = window.nlp_compromise;
 var console_message;
 var help_message;
 var font;
+var room_img;
 
 /* ------------------------- CLASS DEFINITIONS ------------------------- */
 class Character {
@@ -189,6 +190,9 @@ function makeRoom(title) {
 function preload() {
     z = loadStrings("data/lines.txt");
     font = loadFont('assets/cour.ttf');
+
+    // just for testing purposes
+    room_img = loadImage("assets/room_base.png");
 }
 
 function setup() {
@@ -239,7 +243,7 @@ function drawText() {
 
     text(console_message, width/2, height/6);
     textSize(20);
-    // textAlign(LEFT, TOP);
+    textAlign(LEFT, TOP);
     if (help_message)
         text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
         lines_margin, height*4/5, width-2*lines_margin, height
@@ -251,7 +255,9 @@ function drawText() {
     fill(255, 255, 255);
     textAlign(LEFT, TOP);
     text(cur_room.desc.join(' '), lines_margin, height*2/3, width-2*lines_margin, height/2);
-    image(cur_room.img, width/2, height/2);
+    
+    // testing
+    image(room_img, width/2, height/2);
 }
 
 function keyPressed() {
