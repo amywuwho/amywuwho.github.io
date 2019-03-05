@@ -262,7 +262,7 @@ function drawText() {
     
     // testing
     
-    image(cur_room.img, width/2-room_img.width/2, height/2 - room_img.height/2);
+    image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/2);
 }
 
 function keyPressed() {
