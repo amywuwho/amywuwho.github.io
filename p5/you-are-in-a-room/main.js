@@ -8,6 +8,11 @@ var cnv;
 var nlp = window.nlp_compromise;
 var console_message;
 var help_message;
+var font;
+
+// camera
+var camShader;
+var cam;
 
 /* ------------------------- CLASS DEFINITIONS ------------------------- */
 class Character {
@@ -179,16 +184,20 @@ function chooseArticle() {
 
 function preload() {
     z = loadStrings("lines.txt");
+    font = loadFont('assets/cour.ttf');
+
+    camShader = loadShader('vert.txt', 'frag.txt');
 }
 
 function setup() {
 
-    cnv = createCanvas(windowWidth, windowHeight);
+    cnv = createCanvas(windowWidth, windowHeight, WEBGL);
     centerCanvas();
     background(45, 74, 76);
     fill(255, 255, 255);
     textSize(35);
     textAlign(CENTER, CENTER);
+    textFont(font);
     noStroke();
     lines_margin = 50;
 
@@ -210,33 +219,45 @@ function setup() {
     rm = new RiMarkov(5);
     rm.loadText(z.join(' '));
 
-    drawText();
+    cam = createCapture(VIDEO);
+    cam.size(width/4, height/4);
+    cam.hide();
+
+    // drawText();
 }
 
-function drawText() {
+function draw() {
     background(45, 74, 76);
 
     var article = chooseArticle();
 
     textSize(35);
     textAlign(CENTER, CENTER);
+    textFont(font);
     fill(255, 255, 255);
     text("You are in " + 
          article + 
          cur_room.title + ".", width/2, height/4);
 
-    fill(255, 35, 90);
     text(console_message, width/2, height/6);
     textSize(20);
-    textAlign(LEFT, TOP);
+    // textAlign(LEFT, TOP);
     if (help_message)
+        // text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
+        // lines_margin, height*4/5, width-2*lines_margin, height
+        // );
         text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
-        lines_margin, height*4/5, width-2*lines_margin, height
+        width/2, height*5/6
         );
-    textSize(35);
+    textSize(30);
     fill(255, 255, 255);
     textAlign(LEFT, TOP);
-    text(cur_room.desc.join(' '), lines_margin, height/3, width-2*lines_margin, height/2);
+    text(cur_room.desc.join(' '), lines_margin, height*2/3, width-2*lines_margin, height/2);
+
+    // camera stuff
+    shader(camShader);
+    camShader.setUniform('tex0', cam);
+    rect(0, 0, width/2, height/2);
 }
 
 function keyPressed() {
@@ -282,7 +303,7 @@ function keyPressed() {
             you.takeInventory();
 
         else if (cmd_tokens[0] === "help" || cmd_tokens[0] === "h")
-            (help_message) ? false : true;
+            help_message = !help_message;
 
         // HIT
 
@@ -294,6 +315,6 @@ function keyPressed() {
         /* ----------------------------------------------------------- */
 
         input.value('');
-        drawText();
+        // drawText();
     }
 }
