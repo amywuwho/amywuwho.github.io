@@ -70,9 +70,10 @@ class Character {
 }
 
 class Room {
-    constructor(name) {
+    constructor(name, img) {
         this.title = name;
         this.desc = [];
+        this.img = img;
 
         this.north = null;
         this.east = null;
@@ -88,7 +89,7 @@ class Room {
             if (this.north != null) cur_room = this.north;
             else {
                 var new_title = rg.expand();
-                var new_room = new Room(new_title);
+                var new_room = new Room(new_title, makeRoom(new_title));
                 rm.loadText(new_title);
                 new_room.populate();
                 new_room.south = this;
@@ -100,7 +101,7 @@ class Room {
             if (this.south != null) cur_room = this.south;
             else {
                 var new_title = rg.expand();
-                var new_room = new Room(new_title);
+                var new_room = new Room(new_title, makeRoom(new_title));
                 rm.loadText(new_title);
                 new_room.populate();
                 new_room.north = this;
@@ -112,7 +113,7 @@ class Room {
             if (this.east != null) cur_room = this.east;
             else {
                 var new_title = rg.expand();
-                var new_room = new Room(new_title);
+                var new_room = new Room(new_title, makeRoom(new_title));
                 rm.loadText(new_title);
                 new_room.populate();
                 new_room.west = this;
@@ -124,7 +125,7 @@ class Room {
             if (this.west != null) cur_room = this.west;
             else {
                 var new_title = rg.expand();
-                var new_room = new Room(new_title);
+                var new_room = new Room(new_title, makeRoom(new_title));
                 rm.loadText(new_title);
                 new_room.populate();
                 new_room.east = this;
@@ -176,10 +177,17 @@ function chooseArticle() {
     return article;
 }
 
+/* -------------------------- IMAGE HELPERS ------------------------- */
+
+function makeRoom(title) {
+    // make fancier later
+    return loadImage('assets/room_base.png');
+}
+
 /* ------------------------- P5.JS DEFAULTS ------------------------- */
 
 function preload() {
-    z = loadStrings("lines.txt");
+    z = loadStrings("data/lines.txt");
     font = loadFont('assets/cour.ttf');
 }
 
@@ -202,7 +210,7 @@ function setup() {
     console_message = "";
     help_message = true;
 
-    start_room = new Room("room");
+    start_room = new Room("room", makeRoom(new_title));
     cur_room = start_room;
     you = new Character();
 
@@ -233,16 +241,17 @@ function drawText() {
     textSize(20);
     // textAlign(LEFT, TOP);
     if (help_message)
-        // text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
-        // lines_margin, height*4/5, width-2*lines_margin, height
-        // );
         text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
-        width/2, height*5/6
+        lines_margin, height*4/5, width-2*lines_margin, height
         );
+        // text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
+        // width/2, height*5/6
+        // );
     textSize(30);
     fill(255, 255, 255);
     textAlign(LEFT, TOP);
     text(cur_room.desc.join(' '), lines_margin, height*2/3, width-2*lines_margin, height/2);
+    image(cur_room.img, width/2, height/2);
 }
 
 function keyPressed() {
