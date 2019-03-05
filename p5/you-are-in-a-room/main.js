@@ -71,10 +71,10 @@ class Character {
 }
 
 class Room {
-    constructor(name, img) {
+    constructor(name) {
         this.title = name;
         this.desc = [];
-        this.img = img;
+        this.img = this.roomImage(title);
 
         this.north = null;
         this.east = null;
@@ -90,7 +90,7 @@ class Room {
             if (this.north != null) cur_room = this.north;
             else {
                 var new_title = rg.expand();
-                var new_room = new Room(new_title, makeRoom(new_title));
+                var new_room = new Room(new_title);
                 rm.loadText(new_title);
                 new_room.populate();
                 new_room.south = this;
@@ -102,7 +102,7 @@ class Room {
             if (this.south != null) cur_room = this.south;
             else {
                 var new_title = rg.expand();
-                var new_room = new Room(new_title, makeRoom(new_title));
+                var new_room = new Room(new_title);
                 rm.loadText(new_title);
                 new_room.populate();
                 new_room.north = this;
@@ -114,7 +114,7 @@ class Room {
             if (this.east != null) cur_room = this.east;
             else {
                 var new_title = rg.expand();
-                var new_room = new Room(new_title, makeRoom(new_title));
+                var new_room = new Room(new_title);
                 rm.loadText(new_title);
                 new_room.populate();
                 new_room.west = this;
@@ -126,7 +126,7 @@ class Room {
             if (this.west != null) cur_room = this.west;
             else {
                 var new_title = rg.expand();
-                var new_room = new Room(new_title, makeRoom(new_title));
+                var new_room = new Room(new_title);
                 rm.loadText(new_title);
                 new_room.populate();
                 new_room.east = this;
@@ -150,6 +150,7 @@ class Room {
         this.objects = objs;
         console.log(this.objects);
     }
+
 
     roomImage() {
         return loadImage('assets/room_base.png');
@@ -182,13 +183,6 @@ function chooseArticle() {
     return article;
 }
 
-/* -------------------------- IMAGE HELPERS ------------------------- */
-
-function makeRoom(title) {
-    // make fancier later
-    return loadImage('assets/room_base.png');
-}
-
 /* ------------------------- P5.JS DEFAULTS ------------------------- */
 
 function preload() {
@@ -218,7 +212,7 @@ function setup() {
     console_message = "";
     help_message = true;
 
-    start_room = new Room("room", makeRoom("room"));
+    start_room = new Room("room");
     cur_room = start_room;
     you = new Character();
 
@@ -261,8 +255,10 @@ function drawText() {
     text(cur_room.desc.join(' '), lines_margin, height*2/3, width-2*lines_margin, height/2);
     
     // testing
-    
+    // try #1
     image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/2);
+    // try #2
+    image(cur_room.roomImage(), width/2-cur_room.img.width/2, height/2 - cur_room.img.height/2)
 }
 
 function keyPressed() {
