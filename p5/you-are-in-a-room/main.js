@@ -153,7 +153,7 @@ class Room {
 
 
     roomImage() {
-        return loadImage('assets/room_base.png');
+        return 'assets/room_base.png';
     }
 }
 
@@ -255,10 +255,8 @@ function drawText() {
     text(cur_room.desc.join(' '), lines_margin, height*2/3, width-2*lines_margin, height/2);
     
     // testing
-    // try #1
-    image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/2);
-    // try #2
-    image(cur_room.roomImage(), width/2-cur_room.img.width/2, height/2 - cur_room.img.height/2)
+    // try #3
+    image(loadImage(cur_room.img), width/2-cur_room.img.width/2, height/2 - cur_room.img.height/2);
 }
 
 function keyPressed() {
