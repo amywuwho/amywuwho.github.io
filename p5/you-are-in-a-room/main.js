@@ -257,7 +257,8 @@ function drawText() {
     text(cur_room.desc.join(' '), lines_margin, height*2/3, width-2*lines_margin, height/2);
     
     // testing
-    image(room_img, width/2, height/2);
+    
+    image(room_img, width/2-room_img.width/2, height/2 - room_img.height/2);
 }
 
 function keyPressed() {
