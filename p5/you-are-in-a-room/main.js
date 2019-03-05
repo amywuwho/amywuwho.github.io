@@ -186,7 +186,7 @@ function preload() {
     // z = loadStrings("lines.txt");
     // font = loadFont('assets/cour.ttf');
 
-    camShader = loadShader('vert.txt', 'frag.txt');
+    // camShader = loadShader('vert.txt', 'frag.txt');
 }
 
 function setup() {
