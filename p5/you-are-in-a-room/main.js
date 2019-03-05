@@ -210,7 +210,7 @@ function setup() {
     console_message = "";
     help_message = true;
 
-    start_room = new Room("room", makeRoom(new_title));
+    start_room = new Room("room", makeRoom("room"));
     cur_room = start_room;
     you = new Character();
 
