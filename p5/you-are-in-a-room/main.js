@@ -10,10 +10,6 @@ var console_message;
 var help_message;
 var font;
 
-// camera
-var camShader;
-var cam;
-
 /* ------------------------- CLASS DEFINITIONS ------------------------- */
 class Character {
     constructor() {
@@ -183,81 +179,70 @@ function chooseArticle() {
 /* ------------------------- P5.JS DEFAULTS ------------------------- */
 
 function preload() {
-    // z = loadStrings("lines.txt");
-    // font = loadFont('assets/cour.ttf');
-
-    // camShader = loadShader('vert.txt', 'frag.txt');
+    z = loadStrings("lines.txt");
+    font = loadFont('assets/cour.ttf');
 }
 
 function setup() {
 
     cnv = createCanvas(windowWidth, windowHeight);
-    // centerCanvas();
-    // background(45, 74, 76);
-    // fill(255, 255, 255);
-    // textSize(35);
-    // textAlign(CENTER, CENTER);
-    // textFont(font);
-    // noStroke();
-    // lines_margin = 50;
+    centerCanvas();
+    background(45, 74, 76);
+    fill(255, 255, 255);
+    textSize(35);
+    textAlign(CENTER, CENTER);
+    textFont(font);
+    noStroke();
+    lines_margin = 50;
 
-    // input = createInput();
-    // input.style('font-size', '25px');
-    // input.size(300, 50);
-    // input.position(width/2-input.width/2, height*2/3);
-    // console_message = "";
-    // help_message = true;
+    input = createInput();
+    input.style('font-size', '25px');
+    input.size(300, 50);
+    input.position(width/2-input.width/2, height*2/3);
+    console_message = "";
+    help_message = true;
 
-    // start_room = new Room("room");
-    // cur_room = start_room;
-    // you = new Character();
+    start_room = new Room("room");
+    cur_room = start_room;
+    you = new Character();
 
-    // rg = new RiGrammar();
-    // rg.loadFrom("places.yml");
+    rg = new RiGrammar();
+    rg.loadFrom("places.yml");
 
 
-    // rm = new RiMarkov(5);
-    // rm.loadText(z.join(' '));
+    rm = new RiMarkov(5);
+    rm.loadText(z.join(' '));
 
-    cam = createCapture(VIDEO);
-    cam.size(width/4, height/4);
-    // cam.hide();
-
-    // drawText();
+    drawText();
 }
 
-function draw() {
-    // background(45, 74, 76);
+function drawText() {
+    background(45, 74, 76);
 
-    // var article = chooseArticle();
+    var article = chooseArticle();
 
-    // textSize(35);
-    // textAlign(CENTER, CENTER);
-    // textFont(font);
-    // fill(255, 255, 255);
-    // text("You are in " + 
-    //      article + 
-    //      cur_room.title + ".", width/2, height/4);
+    textSize(35);
+    textAlign(CENTER, CENTER);
+    textFont(font);
+    fill(255, 255, 255);
+    text("You are in " + 
+         article + 
+         cur_room.title + ".", width/2, height/4);
 
-    // text(console_message, width/2, height/6);
-    // textSize(20);
-    // // textAlign(LEFT, TOP);
-    // if (help_message)
-    //     // text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
-    //     // lines_margin, height*4/5, width-2*lines_margin, height
-    //     // );
-    //     text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
-    //     width/2, height*5/6
-    //     );
-    // textSize(30);
-    // fill(255, 255, 255);
+    text(console_message, width/2, height/6);
+    textSize(20);
     // textAlign(LEFT, TOP);
-    // text(cur_room.desc.join(' '), lines_margin, height*2/3, width-2*lines_margin, height/2);
-
-    // camera stuff
-    // shader(camShader);
-    // camShader.setUniform('tex0', cam);
-    image(cam, 0, 0, width, height);
+    if (help_message)
+        // text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
+        // lines_margin, height*4/5, width-2*lines_margin, height
+        // );
+        text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
+        width/2, height*5/6
+        );
+    textSize(30);
+    fill(255, 255, 255);
+    textAlign(LEFT, TOP);
+    text(cur_room.desc.join(' '), lines_margin, height*2/3, width-2*lines_margin, height/2);
 }
 
 function keyPressed() {
@@ -315,6 +300,6 @@ function keyPressed() {
         /* ----------------------------------------------------------- */
 
         input.value('');
-        // drawText();
+        drawText();
     }
 }
