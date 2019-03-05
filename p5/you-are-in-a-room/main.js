@@ -74,7 +74,7 @@ class Room {
     constructor(name) {
         this.title = name;
         this.desc = [];
-        this.img = this.roomImage(title);
+        this.img = this.roomImage(name);
 
         this.north = null;
         this.east = null;
