@@ -191,7 +191,7 @@ function preload() {
 
 function setup() {
 
-    cnv = createCanvas(windowWidth, windowHeight, WEBGL);
+    cnv = createCanvas(windowWidth, windowHeight);
     // centerCanvas();
     // background(45, 74, 76);
     // fill(255, 255, 255);
@@ -221,7 +221,7 @@ function setup() {
 
     cam = createCapture(VIDEO);
     cam.size(width/4, height/4);
-    cam.hide();
+    // cam.hide();
 
     // drawText();
 }
@@ -255,9 +255,9 @@ function draw() {
     // text(cur_room.desc.join(' '), lines_margin, height*2/3, width-2*lines_margin, height/2);
 
     // camera stuff
-    shader(camShader);
-    camShader.setUniform('tex0', cam);
-    rect(0, 0, width, height);
+    // shader(camShader);
+    // camShader.setUniform('tex0', cam);
+    image(cam, 0, 0, width, height);
 }
 
 function keyPressed() {
