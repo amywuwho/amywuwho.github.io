@@ -191,7 +191,7 @@ function preload() {
 
 function setup() {
 
-    createCanvas(windowWidth, windowHeight, WEBGL);
+    cnv = createCanvas(windowWidth, windowHeight, WEBGL);
     // centerCanvas();
     // background(45, 74, 76);
     // fill(255, 255, 255);
