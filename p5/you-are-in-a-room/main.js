@@ -9,7 +9,7 @@ var nlp = window.nlp_compromise;
 var console_message;
 var help_message;
 var font;
-var room_img;
+// var room_img;
 
 /* ------------------------- CLASS DEFINITIONS ------------------------- */
 class Character {
@@ -150,6 +150,10 @@ class Room {
         this.objects = objs;
         console.log(this.objects);
     }
+
+    roomImage() {
+        return loadImage('assets/room_base.png');
+    }
 }
 
 /* ------------------------- WINDOW HELPERS ------------------------- */
@@ -191,8 +195,8 @@ function preload() {
     z = loadStrings("data/lines.txt");
     font = loadFont('assets/cour.ttf');
 
-    // just for testing purposes
-    room_img = loadImage("assets/room_base.png");
+    // // just for testing purposes
+    // room_img = loadImage("assets/room_base.png");
 }
 
 function setup() {
@@ -258,7 +262,7 @@ function drawText() {
     
     // testing
     
-    image(room_img, width/2-room_img.width/2, height/2 - room_img.height/2);
+    image(cur_room.img, width/2-room_img.width/2, height/2 - room_img.height/2);
 }
 
 function keyPressed() {
