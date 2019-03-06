@@ -258,6 +258,9 @@ function drawText() {
     // testing
     // try #1
     image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/2);
+
+    // ohhh this is so jank
+    keyPressed();
     // try #2
     // room_img = cur_room.roomImage();
     // image(room_img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/2);
@@ -319,5 +322,8 @@ function keyPressed() {
 
         input.value('');
         drawText();
+    }
+    else {
+        return;
     }
 }
