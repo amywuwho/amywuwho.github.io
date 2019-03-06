@@ -237,10 +237,10 @@ function drawText() {
     fill(255, 255, 255);
     text("You are in " + 
          article + 
-         cur_room.title + ".", width/2, height/6);
+         cur_room.title + ".", width/2, height/8);
 
     textSize(20);
-    text(console_message, width/2, height/8);
+    text(console_message, width/2, height/10);
     textAlign(LEFT, TOP);
     if (help_message) {
         text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
@@ -253,11 +253,11 @@ function drawText() {
     textSize(30);
     fill(255, 255, 255);
     textAlign(LEFT, TOP);
-    text(cur_room.desc.join(' '), lines_margin, height/4, width-2*lines_margin, height/2);
+    text(cur_room.desc.join(' '), lines_margin, height/6, width-2*lines_margin, height/2);
     
     // testing
     // try #1
-    // image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height);
+    image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height);
     // try #2
     room_img = cur_room.roomImage();
     image(room_img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/2);
