@@ -223,15 +223,10 @@ function setup() {
     rm = new RiMarkov(5);
     rm.loadText(z.join(' '));
 
-    drawText();
+    // drawText();
 }
 
-function doNothing() {
-    // i don't fucking know
-    return;
-}
-
-function drawText() {
+function draw() {
     background(45, 74, 76);
 
     var article = chooseArticle();
@@ -262,8 +257,6 @@ function drawText() {
     
     // testing
     // try #1
-
-    doNothing();
 
     // cur_room.img = cur_room.roomImage();
     image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/2);
@@ -328,6 +321,6 @@ function keyPressed() {
         /* ----------------------------------------------------------- */
 
         input.value('');
-        drawText();
+        // drawText();
     }
 }
