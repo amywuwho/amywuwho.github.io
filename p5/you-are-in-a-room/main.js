@@ -263,7 +263,7 @@ function drawText() {
     // testing
     // try #1
 
-    doNothing();
+    // doNothing();
 
     cur_room.img = cur_room.roomImage();
     image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/2);
