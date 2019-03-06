@@ -208,7 +208,7 @@ function setup() {
     input = createInput();
     input.style('font-size', '25px');
     input.size(300, 50);
-    input.position(width/2-input.width/2, height*2/3+50);
+    input.position(width/2-input.width/2, height*2/3+100);
     console_message = "";
     help_message = true;
 
@@ -259,7 +259,7 @@ function draw() {
     // try #1
 
     // cur_room.img = cur_room.roomImage();
-    image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/2);
+    image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/4);
 
     // try #2
     // room_img = cur_room.roomImage();
