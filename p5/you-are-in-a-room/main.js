@@ -208,7 +208,7 @@ function setup() {
     input = createInput();
     input.style('font-size', '25px');
     input.size(300, 50);
-    input.position(width/2-input.width/2, height*2/3+20);
+    input.position(width/2-input.width/2, height*2/3+50);
     console_message = "";
     help_message = true;
 
@@ -257,7 +257,7 @@ function drawText() {
     
     // testing
     // try #1
-    image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height);
+    image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/2);
     // try #2
     room_img = cur_room.roomImage();
     image(room_img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/2);
