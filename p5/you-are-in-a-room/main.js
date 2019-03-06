@@ -188,9 +188,6 @@ function chooseArticle() {
 function preload() {
     z = loadStrings("data/lines.txt");
     font = loadFont('assets/cour.ttf');
-
-    // // just for testing purposes
-    // room_img = loadImage("assets/room_base.png");
 }
 
 function setup() {
@@ -223,7 +220,6 @@ function setup() {
     rm = new RiMarkov(5);
     rm.loadText(z.join(' '));
 
-    // drawText();
 }
 
 function draw() {
@@ -256,14 +252,7 @@ function draw() {
     text(cur_room.desc.join(' '), lines_margin, height/6, width-2*lines_margin, height/2);
     
     // testing
-    // try #1
-
-    // cur_room.img = cur_room.roomImage();
-    image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/4);
-
-    // try #2
-    // room_img = cur_room.roomImage();
-    // image(room_img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/2);
+    image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/3);
 }
 
 function keyPressed() {
@@ -321,6 +310,5 @@ function keyPressed() {
         /* ----------------------------------------------------------- */
 
         input.value('');
-        // drawText();
     }
 }
