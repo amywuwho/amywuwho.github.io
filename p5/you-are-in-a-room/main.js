@@ -54,7 +54,7 @@ class Character {
                 if (place.desc[j].indexOf(thing) !== -1) {
                     // delete other objects from that sentence
                     for (var i = 0; i < place.objects.length; i++) {
-                        if (place.desc[j].indexOf(object) !== -1) {
+                        if (place.desc[j].indexOf(place.objects[i]) !== -1) {
                             place.objects.splice(i, 1);
                         }
                     }
