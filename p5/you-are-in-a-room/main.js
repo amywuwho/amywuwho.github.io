@@ -167,6 +167,7 @@ class Room {
             var url = api + apiKey + query;
             loadJSON(url, this.gotData);
 
+            console.log(this.img.width);
             var img_x = random(width/2 - this.img.width/2, 
                                width/2 + this.img.width/2);
             var img_y = random(height/2 - this.img.height/2, 
@@ -310,9 +311,6 @@ function draw() {
         var x = coords.x;
         var y = coords.y;
 
-        console.log("x, y:");
-        console.log(x);
-        console.log(y);
         // if (x > width/2 + cur_room.img.width/2 - imgWidth) x = width/2 + cur_room.img.width/2 - imgWidth;
         image(obj_img, x, y);
     }
