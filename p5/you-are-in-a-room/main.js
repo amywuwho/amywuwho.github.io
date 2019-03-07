@@ -210,7 +210,7 @@ function gotData(data, imgurl) {
     var secret = data.photos.photo[0].secret;
     
     imgurl = "farm" + farmid + ".staticflickr.com/" + serverid + "/" + id + "_" + secret + ".jpg";
-    img = loadImage(imgurl);
+    img = createImg(imgurl);
 }
 
 function setup() {
