@@ -18,6 +18,7 @@ var tag = "tomato";
 var query = "&per_page=1&tags=" + tag + "&format=json&nojsoncallback=1";
 var imgurl;
 var img;
+var loaded;
  
 
 /* ------------------------- CLASS DEFINITIONS ------------------------- */
@@ -210,7 +211,7 @@ function gotData(data, imgurl) {
     var secret = data.photos.photo[0].secret;
     
     imgurl = "farm" + farmid + ".staticflickr.com/" + serverid + "/" + id + "_" + secret + ".jpg";
-    img = createImg(imgurl);
+    img = loadImage("https://farm3.staticflickr.com/2849/11011320426_c8ce1bff32_q.jpg", function() {loaded = true;});
 }
 
 function setup() {
@@ -276,7 +277,8 @@ function draw() {
     
     // testing room images
     image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/3);
-    image(img, width/2-img.width/2, height/2-img.height/3);
+    if (loaded)
+        image(img, width/2-img.width/2, height/2-img.height/3);
 }
 
 function keyPressed() {
