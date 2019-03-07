@@ -173,16 +173,17 @@ class Room {
 
     // after retrieving JSON object loads the relevant image from a built URL
     gotData(data) {
-        var farmid = data.photos.photo[0].farm;
-        var serverid = data.photos.photo[0].server;
-        var id = data.photos.photo[0].id;
-        var secret = data.photos.photo[0].secret;
-        
-        var imgurl = "https://farm" + farmid + ".staticflickr.com/" + serverid + "/" + id + "_" + secret + ".jpg";
+        if (data.photos.photo.length != 0) {
+            var farmid = data.photos.photo[0].farm;
+            var serverid = data.photos.photo[0].server;
+            var id = data.photos.photo[0].id;
+            var secret = data.photos.photo[0].secret;
+            
+            var imgurl = "https://farm" + farmid + ".staticflickr.com/" + serverid + "/" + id + "_" + secret + ".jpg";
 
-        // double check callback stuff
-        var img = loadImage(imgurl);
-        populating.object_imgs.push(img);
+            // double check callback stuff
+            loadImage(imgurl, img => {populating.object_imgs.push(img);});
+        }
     }
 }
 
