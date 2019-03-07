@@ -210,6 +210,8 @@ class Room {
         for (var i = 0; i < this.objects.length; i++) {
             var query = trim(this.objects[i]);
             query = query.replace(/\s/g, "+");
+
+            console.log(query);
             var url = api + apiKey + query;
             loadJSON(url, this.gotData);
 
@@ -232,6 +234,7 @@ class Room {
 
     // after retrieving JSON object loads the relevant image from a built URL
     gotData(data) {
+        console.log(data);
         if (data.photos.photo.length != 0) {
             var farmid = data.photos.photo[0].farm;
             var serverid = data.photos.photo[0].server;
