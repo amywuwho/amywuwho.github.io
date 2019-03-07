@@ -14,7 +14,7 @@ var room_img;
 var populating;
 var api = "https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&format=json&nojsoncallback=1";
 var apiKey = "&api_key=78f071a753939e11f518b370bd043b40&tags=";
-var imgWidth = 100;
+var imgSize = 100;
  
 
 /* ------------------------- CLASS DEFINITIONS ------------------------- */
@@ -284,7 +284,7 @@ function draw() {
 
     // help + console message
     textSize(20);
-    text(console_message, width/2, imgWidth);
+    text(console_message, width/2, imgSize);
     textAlign(LEFT, TOP);
     if (help_message) {
         text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
@@ -306,12 +306,15 @@ function draw() {
     // all objects in room
     for (var i = 0; i < cur_room.object_imgs.length; i++) {
         var obj_img = cur_room.object_imgs[i];
-        obj_img.resize(imgWidth, 0);
+        if (obj_img.width > obj_img.height)
+            obj_img.resize(imgSize, 0);
+        else
+            obj_img.resize(0, imgSize);
         var coords = cur_room.object_coords[i];
         var x = coords.x;
         var y = coords.y;
 
-        if (x > width/2 + cur_room.img.width/2 - imgWidth) x = width/2 + cur_room.img.width/2 - imgWidth;
+        if (x > width/2 + cur_room.img.width/2 - imgSize) x = width/2 + cur_room.img.width/2 - imgSize;
         if (y > height/2 + cur_room.img.height/2 - obj_img.height) y = height/2 + cur_room.img.height/2 - obj_img.height;
         image(obj_img, x, y);
     }
