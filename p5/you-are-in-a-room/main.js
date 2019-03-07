@@ -305,7 +305,7 @@ function draw() {
         var y = random(height/2 - cur_room.img.height/2, 
                        height/2 + cur_room.img.height/2 - obj_img.height);
 
-        image(img, x, y);
+        image(obj_img, x, y);
     }
 }
 
