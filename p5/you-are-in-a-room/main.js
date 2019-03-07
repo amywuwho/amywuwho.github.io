@@ -10,6 +10,8 @@ var console_message;
 var help_message;
 var font;
 var room_img;
+// jank storage of what room we're currently populating
+var populating;
 var api = "https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&format=json&nojsoncallback=1";
 var apiKey = "&api_key=78f071a753939e11f518b370bd043b40&tags=";
  
@@ -144,6 +146,7 @@ class Room {
 
     // populates the room with objects via Markov sentence construction
     populate() {
+        populating = this;
         var sentences = rm.generateSentences(4);
         this.desc = sentences;
         
@@ -159,19 +162,17 @@ class Room {
         for (var i = 0; i < this.objects.length; i++) {
             var query = trim(this.objects[i]);
             query = query.replace(/\s/g, "+");
-            console.log(query);
             var url = api + apiKey + query;
-            // console.log(url);
-            var jsons = loadJSON(url);
-            console.log(jsons);
-            this.gotData(jsons);
+            loadJSON(url, this.gotData);
         }
+    }
+
+    roomImage() {
+        return loadImage('assets/room_base.png');
     }
 
     // after retrieving JSON object loads the relevant image from a built URL
     gotData(data) {
-        console.log(this.objects);
-        console.log(this.object_imgs);
         var farmid = data.photos.photo[0].farm;
         var serverid = data.photos.photo[0].server;
         var id = data.photos.photo[0].id;
@@ -181,11 +182,7 @@ class Room {
 
         // double check callback stuff
         var img = loadImage(imgurl);
-        this.object_imgs.push(img);
-    }
-
-    roomImage() {
-        return loadImage('assets/room_base.png');
+        populating.object_imgs.push(img);
     }
 }
 
@@ -214,6 +211,9 @@ function chooseArticle() {
         article = "an ";
     return article;
 }
+
+/* -------------------------- IMAGE HELPERS -------------------------- */
+
 
 /* ------------------------- P5.JS DEFAULTS ------------------------- */
 
