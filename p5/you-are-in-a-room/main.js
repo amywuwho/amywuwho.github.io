@@ -172,7 +172,7 @@ class Room {
                                width/2 + 300);
             
             // hopefully bias towards floor
-            var img_y = height/2 - 340 + biased_y;
+            var img_y = height/2 + 340 - biased_y;
 
             this.object_coords.push({x: img_x, y: img_y});
 
@@ -311,6 +311,8 @@ function draw() {
             obj_img.resize(imgSize, 0);
         else
             obj_img.resize(0, imgSize);
+
+        obj_img.filter('posterize');
         var coords = cur_room.object_coords[i];
         var x = coords.x;
         var y = coords.y;
@@ -318,8 +320,8 @@ function draw() {
         if (x < width/2 - cur_room.img.width/2) x = width/2 - cur_room.img.width/2;
         if (x > width/2 + cur_room.img.width/2 - imgSize) x = width/2 + cur_room.img.width/2 - imgSize;
 
-        if (y < height/2 - cur_room.img.height/2) y = height/2 - cur_room.img.height/2;
-        if (y > height/2 + cur_room.img.height/2 - obj_img.height) y = height/2 + cur_room.img.height/2 - obj_img.height;
+        if (y < height/2 - cur_room.img.height/3) y = height/2 - cur_room.img.height/3;
+        if (y > height/2 + cur_room.img.height*2/3 - obj_img.height) y = height/2 + cur_room.img.height*2/3 - obj_img.height;
         image(obj_img, x, y);
     }
 }
