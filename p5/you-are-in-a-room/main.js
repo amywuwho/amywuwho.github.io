@@ -163,10 +163,9 @@ class Room {
             var url = api + apiKey + query;
             // console.log(url);
             var jsons = loadJSON(url);
+            console.log(jsons);
             this.gotData(jsons);
         }
-
-        console.log(this.objects);
     }
 
     // after retrieving JSON object loads the relevant image from a built URL
