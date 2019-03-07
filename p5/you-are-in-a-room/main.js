@@ -172,7 +172,7 @@ class Room {
                                width/2 + 300);
             
             // hopefully bias towards floor
-            var img_y = height/2 + 340 - biased_y;
+            var img_y = height/2 + 340*2/3 - biased_y;
 
             this.object_coords.push({x: img_x, y: img_y});
 
