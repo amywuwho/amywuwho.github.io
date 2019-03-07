@@ -168,9 +168,9 @@ class Room {
             loadJSON(url, this.gotData);
 
             var img_x = random(width/2 - this.img.width/2, 
-                               width/2 + this.img.width/2 - imgWidth);
+                               width/2 + this.img.width/2);
             var img_y = random(height/2 - this.img.height/2, 
-                               height/2 + this.img.height/2 - imgWidth);
+                               height/2 + this.img.height/2);
 
             this.object_coords.push({x: img_x, y: img_y});
 
@@ -283,7 +283,7 @@ function draw() {
 
     // help + console message
     textSize(20);
-    text(console_message, width/2, height/10);
+    text(console_message, width/2, imgWidth);
     textAlign(LEFT, TOP);
     if (help_message) {
         text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
@@ -307,7 +307,11 @@ function draw() {
         var obj_img = cur_room.object_imgs[i];
         obj_img.resize(imgWidth, 0);
         var coords = cur_room.object_coords[i];
-        image(obj_img, coords.x, coords.y);
+        var x = coords.x;
+        var y = coords.y;
+
+        if (x > width/2 + cur_room.img.width/2 - imgWidth) x = width/2 + cur_room.img.width/2 - imgWidth;
+        image(obj_img, x, y);
     }
 }
 
