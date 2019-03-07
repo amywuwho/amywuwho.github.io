@@ -162,7 +162,8 @@ class Room {
             console.log(query);
             var url = api + apiKey + query;
             // console.log(url);
-            loadJSON(url, this.gotData);
+            var jsons = loadJSON(url);
+            this.gotData(jsons);
         }
 
         console.log(this.objects);
