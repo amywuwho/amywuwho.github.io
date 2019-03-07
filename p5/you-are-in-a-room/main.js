@@ -16,6 +16,10 @@ var api = "https://api.flickr.com/services/rest/?method=flickr.photos.search&per
 var apiKey = "&api_key=78f071a753939e11f518b370bd043b40&tags=";
 var imgSize = 100;
 var takeHP = .1;
+
+// because async sucks
+var trash1, trash2, trash3, trash4;
+var trash = [];
  
 
 /* ------------------------- CLASS DEFINITIONS ------------------------- */
@@ -26,7 +30,7 @@ class Character {
 
     // takes object if possible
     take(thing, place) {
-        console.log(thing);
+        // console.log(thing);
         var thingIndex = -1;
         
         // sees if obj exists
@@ -58,15 +62,15 @@ class Character {
                                      coords: obj_coord[0]};
                                     //  hp: obj_hp[0]};
 
-            console.log(place.objects);
-            console.log(this.inventory);
+            // console.log(place.objects);
+            // console.log(this.inventory);
         }
         else console_message = "Can't find " + thing + " in room!";
     }
 
     // puts down object if possible
     put(thing, place) {
-        console.log(thing);
+        // console.log(thing);
         if (thing in this.inventory) {
             console_message = "";
             place.objects.push(thing);
@@ -74,7 +78,7 @@ class Character {
 
             // deteriorate the pixels
             var img = thing_data.img;
-            console.log(img);
+            // console.log(img);
             for (let y = 0; y < img.height; y++) {
                 for (let x = 0; x < img.width; x++) {
                     let i = (x + y * img.width) * 4;
@@ -98,8 +102,8 @@ class Character {
 
             delete this.inventory[thing];
 
-            console.log(place.objects);
-            console.log(this.inventory);
+            // console.log(place.objects);
+            // console.log(this.inventory);
         }
         else console_message = "Can't find " + thing + " in inventory!";
     }
@@ -211,7 +215,7 @@ class Room {
             var query = trim(this.objects[i]);
             query = query.replace(/\s/g, "+");
 
-            console.log(query);
+            // console.log(query);
             var url = api + apiKey + query;
             loadJSON(url, this.gotData);
 
@@ -226,6 +230,11 @@ class Room {
             this.object_coords.push({x: img_x, y: img_y});
             // this.object_hp.push(1);
         }
+
+        // if loadImages failed
+        while (this.objects.length != this.object_imgs.length) {
+            this.object_imgs.push(random(trash));
+        }
     }
 
     roomImage() {
@@ -234,7 +243,7 @@ class Room {
 
     // after retrieving JSON object loads the relevant image from a built URL
     gotData(data) {
-        console.log(data);
+        // console.log(data);
         if (data.photos.photo.length != 0) {
             var farmid = data.photos.photo[0].farm;
             var serverid = data.photos.photo[0].server;
@@ -286,6 +295,11 @@ function chooseArticle() {
 function preload() {
     z = loadStrings("data/lines.txt");
     font = loadFont('assets/cour.ttf');
+
+    trash1 = loadImage("assets/trash1.png");
+    trash2 = loadImage("assets/trash2.png");
+    trash3 = loadImage("assets/trash3.png");
+    trash4 = loadImage("assets/trash4.png");
 }
 
 function setup() {
@@ -319,6 +333,12 @@ function setup() {
     rg.loadFrom("places.yml");
     rm = new RiMarkov(5);
     rm.loadText(z.join(' '));
+
+    // trash
+    trash.push(trash1);
+    trash.push(trash2);
+    trash.push(trash3);
+    trash.push(trash4);
 
 }
 
