@@ -14,6 +14,7 @@ var room_img;
 var populating;
 var api = "https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&format=json&nojsoncallback=1";
 var apiKey = "&api_key=78f071a753939e11f518b370bd043b40&tags=";
+var imgWidth = 150;
  
 
 /* ------------------------- CLASS DEFINITIONS ------------------------- */
@@ -166,13 +167,10 @@ class Room {
             var url = api + apiKey + query;
             loadJSON(url, this.gotData);
 
-            // give x as the range from the left of the "room" to right of the "room"
-            var img_x = random(width/2 - cur_room.img.width/2, 
-                           width/2 + cur_room.img.width/2 - obj_img.width);
-
-            // same for height
-            var img_y = random(height/2 - cur_room.img.height/2, 
-                           height/2 + cur_room.img.height/2 - obj_img.height);
+            var img_x = random(width/2 - this.img.width/2, 
+                               width/2 + this.img.width/2 - imgWidth);
+            var img_y = random(height/2 - this.img.height/2, 
+                               height/2 + this.img.height/2 - imgWidth);
 
             this.object_coords.push({x: img_x, y: img_y});
 
@@ -307,7 +305,7 @@ function draw() {
     // all objects in room
     for (var i = 0; i < cur_room.object_imgs.length; i++) {
         var obj_img = cur_room.object_imgs[i];
-        obj_img.resize(150, 0);
+        obj_img.resize(imgWidth, 0);
         var coords = cur_room.object_coords[i];
         image(obj_img, coords.x, coords.y);
     }
