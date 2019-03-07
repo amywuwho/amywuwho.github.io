@@ -15,7 +15,7 @@ var populating;
 var api = "https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&format=json&nojsoncallback=1";
 var apiKey = "&api_key=78f071a753939e11f518b370bd043b40&tags=";
 var imgSize = 100;
-var takeHP = .25;
+var takeHP = .2;
 
 // because async sucks
 var trash1, trash2, trash3, trash4;
@@ -55,7 +55,10 @@ class Character {
                     // delete other objects from that sentence
                     for (var i = 0; i < place.objects.length; i++) {
                         if (place.desc[j].indexOf(place.objects[i]) !== -1) {
+                            // remove those
                             place.objects.splice(i, 1);
+                            place.object_imgs.splice(i,1);
+                            place.object_coords.splice(i,1);
                         }
                     }
 
