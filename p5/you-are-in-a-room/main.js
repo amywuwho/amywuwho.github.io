@@ -230,11 +230,6 @@ class Room {
             this.object_coords.push({x: img_x, y: img_y});
             // this.object_hp.push(1);
         }
-
-        // if loadImages failed
-        while (this.objects.length != this.object_imgs.length) {
-            this.object_imgs.push(random(trash));
-        }
     }
 
     roomImage() {
@@ -253,10 +248,15 @@ class Room {
             var imgurl = "https://farm" + farmid + ".staticflickr.com/" + serverid + "/" + id + "_" + secret + ".jpg";
 
             // double check callback stuff
-            loadImage(imgurl, img => {
-                img.loadPixels();
-                populating.object_imgs.push(img);
-            });
+            loadImage(imgurl, 
+                img => {
+                    img.loadPixels();
+                    populating.object_imgs.push(img);
+                }, img => {
+                    populating.object_imgs.push(random(trash));
+                }
+
+            );
         }
     }
 }
