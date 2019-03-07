@@ -74,6 +74,7 @@ class Character {
 
             // deteriorate the pixels
             var img = thing_data.img;
+            console.log(img);
             for (let y = 0; y < img.height; y++) {
                 for (let x = 0; x < img.width; x++) {
                     let i = (x + y * img.width) * 4;
