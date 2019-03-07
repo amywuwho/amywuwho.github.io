@@ -210,8 +210,8 @@ function gotData(data, imgurl) {
     var id = data.photos.photo[0].id;
     var secret = data.photos.photo[0].secret;
     
-    imgurl = "farm" + farmid + ".staticflickr.com/" + serverid + "/" + id + "_" + secret + ".jpg";
-    img = loadImage("https://farm3.staticflickr.com/2849/11011320426_c8ce1bff32_q.jpg", function() {loaded = true;});
+    imgurl = "https://farm" + farmid + ".staticflickr.com/" + serverid + "/" + id + "_" + secret + ".jpg";
+    img = loadImage(imgurl, function() {loaded = true;});
 }
 
 function setup() {
