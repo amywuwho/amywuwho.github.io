@@ -158,7 +158,7 @@ class Room {
 
         for (var i = 0; i < this.objects.length; i++) {
             var query = trim(this.objects[i]);
-            query.replace(/\s/g, "+");
+            query = query.replace(/\s/g, "+");
             console.log(query);
             var url = api + apiKey + query;
             // console.log(url);
