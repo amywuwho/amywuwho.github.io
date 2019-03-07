@@ -299,10 +299,16 @@ function preload() {
     z = loadStrings("data/lines.txt");
     font = loadFont('assets/cour.ttf');
 
+    // load the fucking garbage
     trash1 = loadImage("assets/trash1.png");
     trash2 = loadImage("assets/trash2.png");
     trash3 = loadImage("assets/trash3.png");
     trash4 = loadImage("assets/trash4.png");
+
+    trash1.loadPixels();
+    trash2.loadPixels();
+    trash3.loadPixels();
+    trash4.loadPixels();
 }
 
 function setup() {
