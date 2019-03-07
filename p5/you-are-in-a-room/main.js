@@ -310,7 +310,10 @@ function draw() {
         var x = coords.x;
         var y = coords.y;
 
-        if (x > width/2 + cur_room.img.width/2 - imgWidth) x = width/2 + cur_room.img.width/2 - imgWidth;
+        console.log("x, y:");
+        console.log(x);
+        console.log(y);
+        // if (x > width/2 + cur_room.img.width/2 - imgWidth) x = width/2 + cur_room.img.width/2 - imgWidth;
         image(obj_img, x, y);
     }
 }
