@@ -15,6 +15,7 @@ var populating;
 var api = "https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&format=json&nojsoncallback=1";
 var apiKey = "&api_key=78f071a753939e11f518b370bd043b40&tags=";
 var imgSize = 100;
+var takeHP = .1;
  
 
 /* ------------------------- CLASS DEFINITIONS ------------------------- */
@@ -42,6 +43,7 @@ class Character {
             place.objects.splice(thingIndex, 1);
             var obj_img = place.object_imgs.splice(thingIndex, 1);
             var obj_coord = place.object_coords.splice(thingIndex, 1);
+            // var obj_hp = place.object_hp.splice(thingIndex, 1);
 
             // finds relevant sentence in desc
             for (var j = 0; j < place.desc.length; j++) {
@@ -50,7 +52,11 @@ class Character {
                     place.desc.splice(j, 1);
                 }
             }
-            this.inventory[thing] = {sentence: obj_sentence, img: obj_img[0], coords: obj_coord[0]};
+
+            this.inventory[thing] = {sentence: obj_sentence, 
+                                     img: obj_img[0], 
+                                     coords: obj_coord[0]};
+                                    //  hp: obj_hp[0]};
 
             console.log(place.objects);
             console.log(this.inventory);
@@ -66,10 +72,28 @@ class Character {
             place.objects.push(thing);
             var thing_data = this.inventory[thing];
 
+            // deteriorate the pixels
+            var img = thing_data.img;
+            for (let y = 0; y < img.height; y++) {
+                for (let x = 0; x < img.width; x++) {
+                    let i = (x + y * img.width) * 4;
+                    let p = random(1);
+                    if (p < takeHP) {
+                        img.pixels[i] = 255;
+                        img.pixels[i+1] = 255;
+                        img.pixels[i+2] = 255;
+                        img.pixels[i+3] = 255;
+                    }
+                }
+            }
+            img.updatePixels();
+
             // put all data in room where it belongs
             place.desc.push(thing_data.sentence);
-            place.object_imgs(thing_data.img);
-            place.object_coords(thing_data.coords);
+            place.object_imgs.push(img);
+            place.object_coords.push(thing_data.coords);
+            // place.object_hp.push(thing_data.hp - takeHP);
+
 
             delete this.inventory[thing];
 
@@ -108,9 +132,11 @@ class Room {
         this.west = null;
         this.south = null;
 
+        // eventually clean this up to just be an array of objects
         this.objects = [];
         this.object_imgs = [];
         this.object_coords = [];
+        // this.object_hp = [];
     }
 
     move(dir) {
@@ -193,8 +219,9 @@ class Room {
             // hopefully bias towards floor
             var img_y = height/2 - 340/3 + biased_y;
 
+            // populate object data
             this.object_coords.push({x: img_x, y: img_y});
-
+            // this.object_hp.push(1);
         }
     }
 
@@ -213,7 +240,10 @@ class Room {
             var imgurl = "https://farm" + farmid + ".staticflickr.com/" + serverid + "/" + id + "_" + secret + ".jpg";
 
             // double check callback stuff
-            loadImage(imgurl, img => {populating.object_imgs.push(img);});
+            loadImage(imgurl, img => {
+                img.loadPixels();
+                populating.object_imgs.push(img);
+            });
         }
     }
 }
@@ -335,11 +365,13 @@ function draw() {
         var x = coords.x;
         var y = coords.y;
 
-        if (x < width/2 - cur_room.img.width/2 + 50) x = width/2 - cur_room.img.width/2 + 50;
-        if (x > width/2 + cur_room.img.width/2 - imgSize - 50) x = width/2 + cur_room.img.width/2 - imgSize - 50;
+        // draw objects, but make sure they're within bounds
+        var margin = 10;
+        if (x < width/2 - cur_room.img.width/2 + margin) x = width/2 - cur_room.img.width/2 + margin;
+        if (x > width/2 + cur_room.img.width/2 - imgSize - margin) x = width/2 + cur_room.img.width/2 - imgSize - margin;
 
-        if (y < height/2 - cur_room.img.height/3 + 50) y = height/2 - cur_room.img.height/3 + 50;
-        if (y > height/2 + cur_room.img.height*2/3 - obj_img.height - 50) y = height/2 + cur_room.img.height*2/3 - obj_img.height - 50;
+        if (y < height/2 - cur_room.img.height/3 + margin) y = height/2 - cur_room.img.height/3 + margin;
+        if (y > height/2 + cur_room.img.height*2/3 - obj_img.height - margin) y = height/2 + cur_room.img.height*2/3 - obj_img.height - margin;
         image(obj_img, x, y);
     }
 }
