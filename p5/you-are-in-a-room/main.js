@@ -168,10 +168,10 @@ class Room {
             loadJSON(url, this.gotData);
 
             console.log(this.img.width);
-            var img_x = random(width/2 - this.img.width/2, 
-                               width/2 + this.img.width/2);
-            var img_y = random(height/2 - this.img.height/2, 
-                               height/2 + this.img.height/2);
+            var img_x = random(width/2 - 300, 
+                               width/2 + 300);
+            var img_y = random(height/2 - 170, 
+                               height/2 + 170);
 
             this.object_coords.push({x: img_x, y: img_y});
 
