@@ -258,6 +258,9 @@ class Room {
 
             );
         }
+        else {
+            populating.object_imgs.push(random(trash));
+        }
     }
 }
 
