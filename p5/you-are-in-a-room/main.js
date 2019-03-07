@@ -90,6 +90,7 @@ class Room {
 
         this.objects = [];
         this.object_imgs = [];
+        this.object_coords = [];
     }
 
     move(dir) {
@@ -164,6 +165,17 @@ class Room {
             query = query.replace(/\s/g, "+");
             var url = api + apiKey + query;
             loadJSON(url, this.gotData);
+
+            // give x as the range from the left of the "room" to right of the "room"
+            var img_x = random(width/2 - cur_room.img.width/2, 
+                           width/2 + cur_room.img.width/2 - obj_img.width);
+
+            // same for height
+            var img_y = random(height/2 - cur_room.img.height/2, 
+                           height/2 + cur_room.img.height/2 - obj_img.height);
+
+            this.object_coords.push({x: img_x, y: img_y});
+
         }
     }
 
@@ -296,16 +308,8 @@ function draw() {
     for (var i = 0; i < cur_room.object_imgs.length; i++) {
         var obj_img = cur_room.object_imgs[i];
         obj_img.resize(150, 0);
-
-        // give x as the range from the left of the "room" to right of the "room"
-        var x = random(width/2 - cur_room.img.width/2, 
-                       width/2 + cur_room.img.width/2 - obj_img.width);
-
-        // same for height
-        var y = random(height/2 - cur_room.img.height/2, 
-                       height/2 + cur_room.img.height/2 - obj_img.height);
-
-        image(obj_img, x, y);
+        var coords = cur_room.object_coords[i];
+        image(obj_img, coords.x, coords.y);
     }
 }
 
