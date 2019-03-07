@@ -52,6 +52,13 @@ class Character {
             // finds relevant sentence in desc
             for (var j = 0; j < place.desc.length; j++) {
                 if (place.desc[j].indexOf(thing) !== -1) {
+                    // delete other objects from that sentence
+                    for (var i = 0; i < place.objects.length; i++) {
+                        if (place.desc[j].indexOf(object) !== -1) {
+                            place.objects.splice(i, 1);
+                        }
+                    }
+
                     obj_sentence += place.desc[j];
                     place.desc.splice(j, 1);
                 }
@@ -113,11 +120,11 @@ class Character {
         var inventory_str = "You have: ";
         for (var key in this.inventory) {
             has_things = true;
-            var thing = key + ", "
+            var thing = key + ", ";
             inventory_str += thing;
         }
         if (has_things) {
-            inventory_str.slice(0, inventory_str.length-2);
+            inventory_str = inventory_str.slice(0, inventory_str.length-2);
             inventory_str += ".";
         }
         else inventory_str = "You have nothing.";
