@@ -15,7 +15,7 @@ var populating;
 var api = "https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&format=json&nojsoncallback=1";
 var apiKey = "&api_key=78f071a753939e11f518b370bd043b40&tags=";
 var imgSize = 100;
-var takeHP = .1;
+var takeHP = .25;
 
 // because async sucks
 var trash1, trash2, trash3, trash4;
