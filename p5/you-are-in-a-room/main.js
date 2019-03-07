@@ -167,11 +167,12 @@ class Room {
             var url = api + apiKey + query;
             loadJSON(url, this.gotData);
 
-            console.log(this.img.width);
+            var biased_y = sqrt(random()) * 340;
             var img_x = random(width/2 - 300, 
                                width/2 + 300);
-            var img_y = random(height/2 - 170, 
-                               height/2 + 170);
+            
+            // hopefully bias towards floor
+            var img_y = height/2 - 340 + biased_y;
 
             this.object_coords.push({x: img_x, y: img_y});
 
@@ -314,7 +315,10 @@ function draw() {
         var x = coords.x;
         var y = coords.y;
 
+        if (x < width/2 - cur_room.img.width/2) x = width/2 - cur_room.img.width/2;
         if (x > width/2 + cur_room.img.width/2 - imgSize) x = width/2 + cur_room.img.width/2 - imgSize;
+
+        if (y < height/2 - cur_room.img.height/2) y = height/2 - cur_room.img.height/2;
         if (y > height/2 + cur_room.img.height/2 - obj_img.height) y = height/2 + cur_room.img.height/2 - obj_img.height;
         image(obj_img, x, y);
     }
