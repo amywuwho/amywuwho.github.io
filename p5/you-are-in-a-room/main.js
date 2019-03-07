@@ -27,22 +27,30 @@ class Character {
     take(thing, place) {
         console.log(thing);
         var thingIndex = -1;
+        
+        // sees if obj exists
         for (var index = 0; index < place.objects.length; index++) {
             if (place.objects[index].indexOf(thing) !== -1) thingIndex = index;
         }
 
+        // moving things around in inventory
         if (thingIndex !== -1) {
             var obj_sentence = "";
             console_message = "";
+            
+            // remove from objects
             place.objects.splice(thingIndex, 1);
+            var obj_img = place.object_imgs.splice(thingIndex, 1);
+            var obj_coord = place.object_coords.splice(thingIndex, 1);
 
+            // finds relevant sentence in desc
             for (var j = 0; j < place.desc.length; j++) {
                 if (place.desc[j].indexOf(thing) !== -1) {
                     obj_sentence += place.desc[j];
                     place.desc.splice(j, 1);
                 }
             }
-            this.inventory[thing] = obj_sentence;
+            this.inventory[thing] = {sentence: obj_sentence, img: obj_img[0], coords: obj_coord[0]};
 
             console.log(place.objects);
             console.log(this.inventory);
@@ -56,7 +64,13 @@ class Character {
         if (thing in this.inventory) {
             console_message = "";
             place.objects.push(thing);
-            place.desc.push(this.inventory[thing]);
+            var thing_data = this.inventory[thing];
+
+            // put all data in room where it belongs
+            place.desc.push(thing_data.sentence);
+            place.object_imgs(thing_data.img);
+            place.object_coords(thing_data.coords);
+
             delete this.inventory[thing];
 
             console.log(place.objects);
@@ -66,13 +80,18 @@ class Character {
     }
 
     takeInventory() {
+        var has_things = false;
         var inventory_str = "You have: ";
         for (var key in this.inventory) {
+            has_things = true;
             var thing = key + ", "
             inventory_str += thing;
         }
-        inventory_str.slice(0, inventory_str.length-2);
-        inventory_str += ".";
+        if (has_things) {
+            inventory_str.slice(0, inventory_str.length-2);
+            inventory_str += ".";
+        }
+        else inventory_str = "You have nothing.";
 
         console_message = inventory_str;
     }
@@ -168,11 +187,11 @@ class Room {
             loadJSON(url, this.gotData);
 
             var biased_y = sqrt(random()) * 340;
-            var img_x = random(width/2 - 300, 
-                               width/2 + 300);
+            var img_x = random(width/2 - 200, 
+                               width/2 + 200);
             
             // hopefully bias towards floor
-            var img_y = height/2 + 340*2/3 - biased_y;
+            var img_y = height/2 - 340/3 + biased_y;
 
             this.object_coords.push({x: img_x, y: img_y});
 
@@ -312,16 +331,15 @@ function draw() {
         else
             obj_img.resize(0, imgSize);
 
-        obj_img.filter('posterize');
         var coords = cur_room.object_coords[i];
         var x = coords.x;
         var y = coords.y;
 
-        if (x < width/2 - cur_room.img.width/2) x = width/2 - cur_room.img.width/2;
-        if (x > width/2 + cur_room.img.width/2 - imgSize) x = width/2 + cur_room.img.width/2 - imgSize;
+        if (x < width/2 - cur_room.img.width/2 + 50) x = width/2 - cur_room.img.width/2 + 50;
+        if (x > width/2 + cur_room.img.width/2 - imgSize - 50) x = width/2 + cur_room.img.width/2 - imgSize - 50;
 
-        if (y < height/2 - cur_room.img.height/3) y = height/2 - cur_room.img.height/3;
-        if (y > height/2 + cur_room.img.height*2/3 - obj_img.height) y = height/2 + cur_room.img.height*2/3 - obj_img.height;
+        if (y < height/2 - cur_room.img.height/3 + 50) y = height/2 - cur_room.img.height/3 + 50;
+        if (y > height/2 + cur_room.img.height*2/3 - obj_img.height - 50) y = height/2 + cur_room.img.height*2/3 - obj_img.height - 50;
         image(obj_img, x, y);
     }
 }
