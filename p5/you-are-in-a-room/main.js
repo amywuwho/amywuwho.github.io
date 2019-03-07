@@ -10,15 +10,8 @@ var console_message;
 var help_message;
 var font;
 var room_img;
-var api = "https://api.flickr.com/services/rest/?method=flickr.photos.search";
-var apiKey = "&api_key=78f071a753939e11f518b370bd043b40";
-
-var tag = "tomato";
-
-var query = "&per_page=1&tags=" + tag + "&format=json&nojsoncallback=1";
-var imgurl;
-var img;
-var loaded;
+var api = "https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&format=json&nojsoncallback=1";
+var apiKey = "&api_key=78f071a753939e11f518b370bd043b40&tags=";
  
 
 /* ------------------------- CLASS DEFINITIONS ------------------------- */
@@ -27,6 +20,7 @@ class Character {
         this.inventory = {}; // key is object, value is desc
     }
 
+    // takes object if possible
     take(thing, place) {
         console.log(thing);
         var thingIndex = -1;
@@ -53,6 +47,7 @@ class Character {
         else console_message = "Can't find " + thing + " in room!";
     }
 
+    // puts down object if possible
     put(thing, place) {
         console.log(thing);
         if (thing in this.inventory) {
@@ -92,6 +87,7 @@ class Room {
         this.south = null;
 
         this.objects = [];
+        this.object_imgs = [];
     }
 
     move(dir) {
@@ -146,6 +142,7 @@ class Room {
         }
     }
 
+    // populates the room with objects via Markov sentence construction
     populate() {
         var sentences = rm.generateSentences(4);
         this.desc = sentences;
@@ -158,9 +155,31 @@ class Room {
         }
 
         this.objects = objs;
+
+        for (var i = 0; i < this.objects.length; i++) {
+            var query = trim(this.objects[i]);
+            query.replace(/\s/g, "+");
+            var url = api + apiKey + query;
+            loadJSON(url, this.gotData);
+        }
+
         console.log(this.objects);
     }
 
+    // after retrieving JSON object loads the relevant image from a built URL
+    gotData(data) {
+ 
+        var farmid = data.photos.photo[0].farm;
+        var serverid = data.photos.photo[0].server;
+        var id = data.photos.photo[0].id;
+        var secret = data.photos.photo[0].secret;
+        
+        var imgurl = "https://farm" + farmid + ".staticflickr.com/" + serverid + "/" + id + "_" + secret + ".jpg";
+
+        // double check callback stuff
+        var img = loadImage(imgurl);
+        this.object_imgs.push(img);
+    }
 
     roomImage() {
         return loadImage('assets/room_base.png');
@@ -198,24 +217,11 @@ function chooseArticle() {
 function preload() {
     z = loadStrings("data/lines.txt");
     font = loadFont('assets/cour.ttf');
-
-    var url = api + apiKey + query;
-    loadJSON(url, gotData);
-}
-
-function gotData(data, imgurl) {
- 
-    var farmid = data.photos.photo[0].farm;
-    var serverid = data.photos.photo[0].server;
-    var id = data.photos.photo[0].id;
-    var secret = data.photos.photo[0].secret;
-    
-    imgurl = "https://farm" + farmid + ".staticflickr.com/" + serverid + "/" + id + "_" + secret + ".jpg";
-    img = loadImage(imgurl, function() {loaded = true;});
 }
 
 function setup() {
 
+    // canvas and basic setup
     cnv = createCanvas(windowWidth, windowHeight);
     centerCanvas();
     background(45, 74, 76);
@@ -226,6 +232,7 @@ function setup() {
     noStroke();
     lines_margin = 50;
 
+    // input and console message setups
     input = createInput();
     input.style('font-size', '25px');
     input.size(300, 50);
@@ -233,14 +240,14 @@ function setup() {
     console_message = "";
     help_message = true;
 
+    // object setups
     start_room = new Room("room");
     cur_room = start_room;
     you = new Character();
 
+    // automatic writing setup
     rg = new RiGrammar();
     rg.loadFrom("places.yml");
-
-
     rm = new RiMarkov(5);
     rm.loadText(z.join(' '));
 
@@ -249,6 +256,7 @@ function setup() {
 function draw() {
     background(45, 74, 76);
 
+    // YOU ARE IN A ROOM sentence construction
     var article = chooseArticle();
 
     textSize(35);
@@ -259,6 +267,7 @@ function draw() {
          article + 
          cur_room.title + ".", width/2, height/8);
 
+    // help + console message
     textSize(20);
     text(console_message, width/2, height/10);
     textAlign(LEFT, TOP);
@@ -266,19 +275,34 @@ function draw() {
         text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
         lines_margin, height*7/8, width-2*lines_margin, height
         );
-        // text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
-        // width/2, height*5/6
-        // );
     }
+
+    // writing room description
     textSize(30);
     fill(255, 255, 255);
     textAlign(LEFT, TOP);
     text(cur_room.desc.join(' '), lines_margin, height/6, width-2*lines_margin, height/2);
     
     // testing room images
+
+    // basic room
     image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/3);
-    if (loaded)
-        image(img, width/2-img.width/2, height/2-img.height/3);
+
+    // all objects in room
+    for (var i = 0; i < cur_room.object_imgs.length; i++) {
+        var obj_img = cur_room.object_imgs[i];
+        obj_img.resize(150, 0);
+
+        // give x as the range from the left of the "room" to right of the "room"
+        var x = random(width/2 - cur_room.img.width/2, 
+                       width/2 + cur_room.img.width/2 - obj_img.width);
+
+        // same for height
+        var y = random(height/2 - cur_room.img.height/2, 
+                       height/2 + cur_room.img.height/2 - obj_img.height);
+
+        image(img, x, y);
+    }
 }
 
 function keyPressed() {
