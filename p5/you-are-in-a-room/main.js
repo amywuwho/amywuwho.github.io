@@ -10,6 +10,15 @@ var console_message;
 var help_message;
 var font;
 var room_img;
+var api = "https://api.flickr.com/services/rest/?method=flickr.photos.search";
+var apiKey = "&api_key=78f071a753939e11f518b370bd043b40";
+
+var tag = "tomato";
+
+var query = "&per_page=1&tags=" + tag + "&format=json&nojsoncallback=1";
+var imgurl;
+var img;
+ 
 
 /* ------------------------- CLASS DEFINITIONS ------------------------- */
 class Character {
@@ -188,6 +197,20 @@ function chooseArticle() {
 function preload() {
     z = loadStrings("data/lines.txt");
     font = loadFont('assets/cour.ttf');
+
+    var url = api + apiKey + query;
+    loadJSON(url, gotData);
+}
+
+function gotData(data, imgurl) {
+ 
+    var farmid = data.photos.photo[0].farm;
+    var serverid = data.photos.photo[0].server;
+    var id = data.photos.photo[0].id;
+    var secret = data.photos.photo[0].secret;
+    
+    imgurl = "farm" + farmid + ".staticflickr.com/" + serverid + "/" + id + "_" + secret + ".jpg";
+    img = loadImage(imgurl);
 }
 
 function setup() {
@@ -251,8 +274,9 @@ function draw() {
     textAlign(LEFT, TOP);
     text(cur_room.desc.join(' '), lines_margin, height/6, width-2*lines_margin, height/2);
     
-    // testing
+    // testing room images
     image(cur_room.img, width/2-cur_room.img.width/2, height/2 - cur_room.img.height/3);
+    image(img, width/2-img.width/2, height/2-img.height/3);
 }
 
 function keyPressed() {
