@@ -361,7 +361,7 @@ function draw() {
 
     // help + console message
     textSize(20);
-    text(console_message, width/2, imgSize);
+    text(console_message, width/2, imgSize/2);
     textAlign(LEFT, TOP);
     if (help_message) {
         text("You are in an ever-generating map of rooms! You can either: move in a cardinal direction, pick things up/put them down, or check your inventory. Sorry, it's a little boring right now.",
