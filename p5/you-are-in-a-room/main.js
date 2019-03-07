@@ -14,7 +14,7 @@ var room_img;
 var populating;
 var api = "https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=1&format=json&nojsoncallback=1";
 var apiKey = "&api_key=78f071a753939e11f518b370bd043b40&tags=";
-var imgWidth = 150;
+var imgWidth = 100;
  
 
 /* ------------------------- CLASS DEFINITIONS ------------------------- */
@@ -311,7 +311,8 @@ function draw() {
         var x = coords.x;
         var y = coords.y;
 
-        // if (x > width/2 + cur_room.img.width/2 - imgWidth) x = width/2 + cur_room.img.width/2 - imgWidth;
+        if (x > width/2 + cur_room.img.width/2 - imgWidth) x = width/2 + cur_room.img.width/2 - imgWidth;
+        if (y > height/2 + cur_room.img.height/2 - obj_img.height) y = height/2 + cur_room.img.height/2 - obj_img.height;
         image(obj_img, x, y);
     }
 }
