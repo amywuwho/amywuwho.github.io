@@ -111,7 +111,7 @@ function draw() {
 }
 
 function allCat() {
-    var cats = (head_i == 0 && 
+    return (head_i == 0 && 
             torso_i == 0 && 
             bottom_i == 0 && 
             right_i == 0 && 
