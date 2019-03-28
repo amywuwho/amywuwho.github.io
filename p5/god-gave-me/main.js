@@ -119,19 +119,22 @@ function draw() {
 
     stroke(0);
     strokeWeight(4);
+    fill(255);
     rect(0, 0, width/2, height);
     rect(width/2, 0, width/2, height);
 
     fill(0);
-    text("god gave me these hands to dab with", width/2, height/8);
+    stroke(255);
+    strokeWeight(10);
+    text("god gave me these hands to dab with", width/2, 75);
     text("x", width/4, height/2);
     text("o", 3*width/4, height/2);
 
-    image(cat_head, width/2, height/2-500);
-    image(cat_torso, width/2, height/2);
-    image(cat_bottom, width/2, height/2+250);
-    image(cat_right, width/2+300, height/2);
-    image(cat_left, width/2-300, height/2);
+    image(cat_bottom, width/2-301, height/2-79, cat_bottom.width/4, cat_bottom.height/4);
+    image(cat_torso, width/2-151, height/2-189, cat_torso.width/4, cat_torso.height/4);
+    image(cat_right, width/2-66, height/2-335, cat_right.width/4, cat_right.height/4);
+    image(cat_left, width/2-333, height/2-237, cat_left.width/4, cat_left.height/4);
+    image(cat_head, width/2-194, height/2-325, cat_head.width/4, cat_head.height/4);
 }
 
 function mousePressed() {
