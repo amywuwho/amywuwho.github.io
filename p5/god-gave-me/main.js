@@ -68,11 +68,11 @@ function setup() {
     textAlign(CENTER, CENTER);
     noStroke();
 
-    head_i = int(random(heads.length()));
-    torso_i = int(random(torsos.length()));
-    right_i = int(random(rights.length()));
-    left_i = int(random(lefts.length()));
-    bottom_i = int(random(bottoms.length()));
+    head_i = int(random(heads.length));
+    torso_i = int(random(torsos.length));
+    right_i = int(random(rights.length));
+    left_i = int(random(lefts.length));
+    bottom_i = int(random(bottoms.length));
 
     head = heads[head_i];
     torso = torsos[torso_i];
@@ -113,7 +113,7 @@ function allCat() {
             );
 }
 
-function isCat(i) {
+function isCat(body_part) {
     if (body_part == 0) { // bottom
         return bottom_i == 0;
     }
@@ -175,27 +175,27 @@ function mousePressed() {
     }
     else { // bad choice
         if (body_part == 0) { // bottom
-            var bottom_i = int(random(bottom_i+1, bottoms.length()));
+            var bottom_i = int(random(bottom_i+1, bottoms.length));
             bottom = bottoms[bottom_i];
         }
 
         else if (body_part == 1) { // torso
-            var torso_i = int(random(torso_i+1, torsos.length()));
+            var torso_i = int(random(torso_i+1, torsos.length));
             torso = torsos[torso_i];
         }
 
         else if (body_part == 2) { // head
-            var head_i = int(random(head_i+1, heads.length()));
+            var head_i = int(random(head_i+1, heads.length));
             head = heads[head_i];
         }
 
         else if (body_part == 3) { // right
-            var right_i = int(random(right_i+1, rights.length()));
+            var right_i = int(random(right_i+1, rights.length));
             right = rights[right_i];
         }
 
         else { // left
-            var left_i = int(random(left_i+1, lefts.length()));
+            var left_i = int(random(left_i+1, lefts.length));
             left = lefts[left_i];
         }
     }
