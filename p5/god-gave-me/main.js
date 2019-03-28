@@ -8,8 +8,6 @@ var bottoms = [];
 var head, torso, left, right, bottom;
 var head_i, torso_i, left_i, right_i, bottom_i;
 
-var all = false;
-
 /* ------------------------- P5.JS DEFAULTS ------------------------- */
 
 function preload() {
@@ -95,6 +93,8 @@ function draw() {
     fill(0);
     stroke(255);
     strokeWeight(10);
+
+    textSize(50);
     text("god gave me these hands to dab with", width/2, 75);
     text("x", width/4, height/2);
     text("o", 3*width/4, height/2);
@@ -105,11 +105,13 @@ function draw() {
     image(right, width/2-66, height/2-335, right.width/4, right.height/4);
     image(left, width/2-333, height/2-237, left.width/4, left.height/4);
 
-    if (all) text("you've reached nirvana! refresh to start again.", width/2, height-75);
+
+    textSize(40);
+    if (allCat()) text("you've reached nirvana! refresh to start again.", width/2, height-75);
 }
 
 function allCat() {
-    return (head_i == 0 && 
+    var cats = (head_i == 0 && 
             torso_i == 0 && 
             bottom_i == 0 && 
             right_i == 0 && 
