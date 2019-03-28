@@ -1,9 +1,11 @@
 
-var head = [];
-var torso = [];
-var left = [];
-var right = [];
-var bottom = [];
+var heads = [];
+var torsos = [];
+var lefts = [];
+var rights = [];
+var bottoms = [];
+
+var head, torso, left, right, bottom;
 
 /* ------------------------- P5.JS DEFAULTS ------------------------- */
 
@@ -54,53 +56,6 @@ function preload() {
     finger_left = loadImage("assets/finger_left.png");
     selfie_left = loadImage("assets/selfie_left.png");
     snap_left = loadImage("assets/snap_left.png");
-
-
-    // image arrays
-    // head
-    head[0] = bowlingball_head;
-    head[1] = cat_head;
-    head[2] = dog_head;
-    head[3] = fish_head;
-    head[4] = old_man_head;
-    head[5] = pinocchio_head;
-    head[6] = real_pinocchio_head;
-    
-    // torso
-    torso[7] = bikini_torso;
-    torso[8] = bikini_piercings_torso;
-    torso[9] = buff_piercings_torso;
-    torso[10] = buff_torso;
-    torso[11] = cat_torso;
-    torso[12] = free_donuts_torso;
-    torso[13] = gingerbread_torso;
-    torso[14] = gingerbread_eaten_torso;
-    torso[15] = swimmer_torso;
-
-    // bottom
-    bottom[16] = cat_bottom;
-    bottom[17] = legwarmers_bottom;
-    bottom[18] = mermaid_bottom;
-    bottom[19] = michaeljackson_bottom;
-    bottom[20] = robot_bottom;
-    bottom[21] = towel_bottom;
-
-    // right
-    right[22] = cat_right;
-    right[23] = dab_right;
-    right[24] = goodhotdog_right;
-    right[25] = octopus_right;
-    right[26] = sadweiner_right;
-    right[27] = watch_right;
-    right[28] = tie_right;
-
-    // left
-    left[29] = cat_left;
-    left[30] = dab_left;
-    left[31] = donut_left;
-    left[32] = finger_left;
-    left[33] = selfie_left;
-    left[34] = snap_left;
 }
 
 function setup() {
@@ -112,6 +67,58 @@ function setup() {
     textAlign(CENTER, CENTER);
     noStroke();
 
+    
+    // image arrays
+    // head
+    heads[0] = bowlingball_head;
+    heads[1] = cat_head;
+    heads[2] = dog_head;
+    heads[3] = fish_head;
+    heads[4] = old_man_head;
+    heads[5] = pinocchio_head;
+    heads[6] = real_pinocchio_head;
+    
+    // torso
+    torsos[7] = bikini_torso;
+    torsos[8] = bikini_piercings_torso;
+    torsos[9] = buff_piercings_torso;
+    torsos[10] = buff_torso;
+    torsos[11] = cat_torso;
+    torsos[12] = free_donuts_torso;
+    torsos[13] = gingerbread_torso;
+    torsos[14] = gingerbread_eaten_torso;
+    torsos[15] = swimmer_torso;
+
+    // bottom
+    bottoms[16] = cat_bottom;
+    bottoms[17] = legwarmers_bottom;
+    bottoms[18] = mermaid_bottom;
+    bottoms[19] = michaeljackson_bottom;
+    bottoms[20] = robot_bottom;
+    bottoms[21] = towel_bottom;
+
+    // right
+    rights[22] = cat_right;
+    rights[23] = dab_right;
+    rights[24] = goodhotdog_right;
+    rights[25] = octopus_right;
+    rights[26] = sadweiner_right;
+    rights[27] = watch_right;
+    rights[28] = tie_right;
+
+    // left
+    lefts[29] = cat_left;
+    lefts[30] = dab_left;
+    lefts[31] = donut_left;
+    lefts[32] = finger_left;
+    lefts[33] = selfie_left;
+    lefts[34] = snap_left;
+
+    head = random(heads);
+    torso = random(torsos);
+    right = random(rights);
+    left = random(lefts);
+    bottom = random(bottoms);
 }
 
 function draw() {
@@ -130,11 +137,11 @@ function draw() {
     text("x", width/4, height/2);
     text("o", 3*width/4, height/2);
 
-    image(cat_bottom, width/2-301, height/2-79, cat_bottom.width/4, cat_bottom.height/4);
-    image(cat_torso, width/2-151, height/2-189, cat_torso.width/4, cat_torso.height/4);
-    image(cat_right, width/2-66, height/2-335, cat_right.width/4, cat_right.height/4);
-    image(cat_left, width/2-333, height/2-237, cat_left.width/4, cat_left.height/4);
-    image(cat_head, width/2-194, height/2-325, cat_head.width/4, cat_head.height/4);
+    image(bottom, width/2-301, height/2-79, bottom.width/4, bottom.height/4);
+    image(torso, width/2-151, height/2-189, torso.width/4, torso.height/4);
+    image(right, width/2-66, height/2-335, right.width/4, right.height/4);
+    image(left, width/2-333, height/2-237, left.width/4, left.height/4);
+    image(head, width/2-194, height/2-325, head.width/4, head.height/4);
 }
 
 function mousePressed() {
