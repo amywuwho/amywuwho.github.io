@@ -147,36 +147,53 @@ function mousePressed() {
         var body_part = int(random(5));
     }
 
-    // console.log(body_part);
-    // console.log(bottom_i);
-    // console.log(torso_i);
-    // console.log(head_i);
-    // console.log(right_i);
-    // console.log(left_i);
-
     // SKIP CHOICE SYSTEM FOR NOW UNTIL YOU IMPLEMENT A SCORE
     if (body_part == 0) { // bottom
-        bottom_i = int(random(bottoms.length));
+        var new_bottom = int(random(bottoms.length));
+        while (new_bottom == bottom_i) {
+            new_bottom = int(random(bottoms.length));
+        }
+        bottom_i = new_bottom;
         bottom = bottoms[bottom_i];
     }
 
     else if (body_part == 1) { // torso
-        torso_i = int(random(torsos.length));
+        var new_torso = int(random(torsos.length));
+        torso = torsos[torso_i];
+        while (new_torso == torso_i) {
+            new_torso = int(random(torsos.length));
+        }
+        torso_i = new_torso;
         torso = torsos[torso_i];
     }
 
     else if (body_part == 2) { // head
-        head_i = int(random(heads.length));
+        var new_head = int(random(heads.length));
+        head = heads[head_i];
+        while (new_head == head_i) {
+            new_head = int(random(heads.length));
+        }
+        head_i = new_head;
         head = heads[head_i];
     }
 
     else if (body_part == 3) { // right
-        right_i = int(random(rights.length));
+        var new_right = int(random(rights.length));
+        right = rights[right_i];
+        while (new_right == right_i) {
+            new_right = int(random(rights.length));
+        }
+        right_i = new_right;
         right = rights[right_i];
     }
 
     else { // left
-        left_i = int(random(lefts.length));
+        var new_left = int(random(lefts.length));
+        left = lefts[left_i];
+        while (new_left == left_i) {
+            new_left = int(random(lefts.length));
+        }
+        left_i = new_left;
         left = lefts[left_i];
     }
 }
