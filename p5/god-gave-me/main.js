@@ -147,36 +147,36 @@ function mousePressed() {
         var body_part = int(random(5));
     }
 
-    console.log(body_part);
-    console.log(bottom_i);
-    console.log(torso_i);
-    console.log(head_i);
-    console.log(right_i);
-    console.log(left_i);
+    // console.log(body_part);
+    // console.log(bottom_i);
+    // console.log(torso_i);
+    // console.log(head_i);
+    // console.log(right_i);
+    // console.log(left_i);
 
     // SKIP CHOICE SYSTEM FOR NOW UNTIL YOU IMPLEMENT A SCORE
     if (body_part == 0) { // bottom
-        var bottom_i = int(random(bottoms.length));
+        bottom_i = int(random(bottoms.length));
         bottom = bottoms[bottom_i];
     }
 
     else if (body_part == 1) { // torso
-        var torso_i = int(random(torsos.length));
+        torso_i = int(random(torsos.length));
         torso = torsos[torso_i];
     }
 
     else if (body_part == 2) { // head
-        var head_i = int(random(heads.length));
+        head_i = int(random(heads.length));
         head = heads[head_i];
     }
 
     else if (body_part == 3) { // right
-        var right_i = int(random(rights.length));
+        right_i = int(random(rights.length));
         right = rights[right_i];
     }
 
     else { // left
-        var left_i = int(random(lefts.length));
+        left_i = int(random(lefts.length));
         left = lefts[left_i];
     }
 }
