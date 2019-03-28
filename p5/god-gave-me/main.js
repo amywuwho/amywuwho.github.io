@@ -147,56 +147,29 @@ function mousePressed() {
         var body_part = int(random(5));
     }
 
-    if (choice == 0) { // "good" choice
-        if (body_part == 0) { // bottom
-            var bottom_i = int(random(0, bottom_i));
-            bottom = bottoms[bottom_i];
-        }
-
-        else if (body_part == 1) { // torso
-            var torso_i = int(random(0, torso_i));
-            torso = torsos[torso_i];
-        }
-
-        else if (body_part == 2) { // head
-            var head_i = int(random(0, head_i));
-            head = heads[head_i];
-        }
-
-        else if (body_part == 3) { // right
-            var right_i = int(random(0, right_i));
-            right = rights[right_i];
-        }
-
-        else { // left
-            var left_i = int(random(0, left_i));
-            left = lefts[left_i];
-        }
+    // SKIP CHOICE SYSTEM FOR NOW UNTIL YOU IMPLEMENT A SCORE
+    if (body_part == 0) { // bottom
+        var bottom_i = int(random(bottoms.length));
+        bottom = bottoms[bottom_i];
     }
-    else { // bad choice
-        if (body_part == 0) { // bottom
-            var bottom_i = int(random(bottom_i+1, bottoms.length));
-            bottom = bottoms[bottom_i];
-        }
 
-        else if (body_part == 1) { // torso
-            var torso_i = int(random(torso_i+1, torsos.length));
-            torso = torsos[torso_i];
-        }
+    else if (body_part == 1) { // torso
+        var torso_i = int(random(torsos.length));
+        torso = torsos[torso_i];
+    }
 
-        else if (body_part == 2) { // head
-            var head_i = int(random(head_i+1, heads.length));
-            head = heads[head_i];
-        }
+    else if (body_part == 2) { // head
+        var head_i = int(random(heads.length));
+        head = heads[head_i];
+    }
 
-        else if (body_part == 3) { // right
-            var right_i = int(random(right_i+1, rights.length));
-            right = rights[right_i];
-        }
+    else if (body_part == 3) { // right
+        var right_i = int(random(rights.length));
+        right = rights[right_i];
+    }
 
-        else { // left
-            var left_i = int(random(left_i+1, lefts.length));
-            left = lefts[left_i];
-        }
+    else { // left
+        var left_i = int(random(lefts.length));
+        left = lefts[left_i];
     }
 }
