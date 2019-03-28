@@ -139,13 +139,20 @@ function mousePressed() {
     if (allCat()) return;
 
     // later differentiate between right and left side;
-    var choice = int(random(2));
+    // var choice = int(random(2));
 
     // lock in if you have a cat
     var body_part = int(random(5));
     while (isCat(body_part)) {
         var body_part = int(random(5));
     }
+
+    console.log(body_part);
+    console.log(bottom_i);
+    console.log(torso_i);
+    console.log(head_i);
+    console.log(right_i);
+    console.log(left_i);
 
     // SKIP CHOICE SYSTEM FOR NOW UNTIL YOU IMPLEMENT A SCORE
     if (body_part == 0) { // bottom
