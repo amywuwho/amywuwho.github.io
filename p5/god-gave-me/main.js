@@ -30,7 +30,7 @@ function preload() {
     torsos[4] = loadImage("assets/buff_torso.png");
     torsos[5] = loadImage("assets/swimmer_torso.png");
     torsos[6] = loadImage("assets/gingerbread_torso.png");
-    torsos[7] = loadImage("assets/gingerbread_torso_eaten.png");
+    torsos[7] = loadImage("assets/gingerbread_eaten_torso.png");
     torsos[8] = loadImage("assets/free_donuts_torso.png");
 
     // bottom
@@ -104,10 +104,49 @@ function draw() {
     image(left, width/2-333, height/2-237, left.width/4, left.height/4);
 }
 
+function allCat() {
+    return (head_i == 0 && 
+            torso_i == 0 && 
+            bottom_i == 0 && 
+            right_i == 0 && 
+            left_i == 0
+            );
+}
+
+function isCat(i) {
+    if (body_part == 0) { // bottom
+        return bottom_i == 0;
+    }
+
+    else if (body_part == 1) { // torso
+        return torso_i == 0;
+    }
+
+    else if (body_part == 2) { // head
+        return head_i == 0;
+    }
+
+    else if (body_part == 3) { // right
+        return right_i == 0;
+    }
+
+    else { // left
+        return left_i == 0;
+    }
+}
+
 function mousePressed() {
+    if (allCat()) return;
+
     // later differentiate between right and left side;
     var choice = int(random(2));
+
+    // lock in if you have a cat
     var body_part = int(random(5));
+    while (isCat(body_part)) {
+        var body_part = int(random(5));
+    }
+
     if (choice == 0) { // "good" choice
         if (body_part == 0) { // bottom
             var bottom_i = int(random(0, bottom_i));
