@@ -107,7 +107,6 @@ function setup() {
 
     // canvas and basic setup
     cnv = createCanvas(windowWidth, windowHeight);
-    centerCanvas();
     background(255);
     textSize(50);
     textAlign(CENTER, CENTER);
