@@ -56,16 +56,6 @@ function preload() {
     finger_left = loadImage("assets/finger_left.png");
     selfie_left = loadImage("assets/selfie_left.png");
     snap_left = loadImage("assets/snap_left.png");
-}
-
-function setup() {
-
-    // canvas and basic setup
-    cnv = createCanvas(windowWidth, windowHeight);
-    background(255);
-    textSize(50);
-    textAlign(CENTER, CENTER);
-    noStroke();
 
     
     // image arrays
@@ -113,6 +103,16 @@ function setup() {
     lefts[32] = finger_left;
     lefts[33] = selfie_left;
     lefts[34] = snap_left;
+}
+
+function setup() {
+
+    // canvas and basic setup
+    cnv = createCanvas(windowWidth, windowHeight);
+    background(255);
+    textSize(50);
+    textAlign(CENTER, CENTER);
+    noStroke();
 
     head = random(heads);
     torso = random(torsos);
