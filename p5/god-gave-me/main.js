@@ -8,6 +8,8 @@ var bottoms = [];
 var head, torso, left, right, bottom;
 var head_i, torso_i, left_i, right_i, bottom_i;
 
+var all = false;
+
 /* ------------------------- P5.JS DEFAULTS ------------------------- */
 
 function preload() {
@@ -102,6 +104,8 @@ function draw() {
     image(head, width/2-194, height/2-325, head.width/4, head.height/4);
     image(right, width/2-66, height/2-335, right.width/4, right.height/4);
     image(left, width/2-333, height/2-237, left.width/4, left.height/4);
+
+    if (all) text("you've reached nirvana! refresh to start again.", width/2, height-75);
 }
 
 function allCat() {
