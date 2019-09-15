@@ -1,7 +1,3 @@
-
-
-
-
 function handleClick() {
 	var text = $(this).text()
 	alert(text)
